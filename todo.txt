@@ -1,0 +1,60 @@
+customer pages
+pages
+1. Landing page
+inspiration http://bellaria.cwsthemes.com/
+   Hero section: slider, social proof, logo
+   Specialities section/features:
+   Offers:  
+   customer reviews/testimonials:
+   Best sellers: 
+   Youtube videos
+   Contact/footer
+
+2.Cart page
+inspiration http://bellaria.cwsthemes.com/cart/
+
+3.Shop page
+inspiration http://bellaria.cwsthemes.com/shop/
+
+4.Login/SignUp
+
+5. Your orders
+delivery status, order status
+
+tech stack
+1.Express for backend
+2.MongoDB
+3.NextJS
+4.Tailwind CSS
+
+Models 
+1.User:
+  Name
+  Address
+  email
+  phone number
+  
+2.Orders
+  email
+  cakes
+  quantity 
+  net price
+  delivery date
+
+3.Cart
+  email
+  cakes
+  customization
+  customization charges
+  net price
+
+4 Cake
+  Name
+  Flavour
+  image
+  Base Price
+
+5 Reviews 
+  Order
+  Stars
+  Message
