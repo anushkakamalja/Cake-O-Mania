@@ -1,13 +1,9 @@
-import Footer from "../sections/homepage/footer"
-import Header from "../sections/homepage/header"
+import Footer from '../sections/homepage/footer';
 
 export default function Home() {
-    return(
+    return (
         <div>
-            <Header/>
-            Hello World
-            <Footer/>    
+            <Footer />
         </div>
-        
     );
 }
