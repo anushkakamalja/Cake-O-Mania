@@ -1,5 +1,6 @@
 import React from 'react';
 import clsx from 'clsx';
+import { useSwipeable } from 'react-swipeable';
 import { Transition } from '@headlessui/react';
 import { HiOutlineChevronRight, HiOutlineChevronLeft } from 'react-icons/hi';
 
@@ -24,15 +25,23 @@ const ImageComponent = ({ src, isOpen }) => {
 
 const ImageCarousel = ({ images }) => {
     const [activeImage, setActiveImage] = React.useState(0);
+    const moveLeft = () => {
+        setActiveImage((((activeImage - 1) % images.length) + images.length) % images.length);
+    };
+    const moveRight = () => {
+        setActiveImage((activeImage + 1) % images.length);
+    };
+    const swipeHandlers = useSwipeable({
+        onSwipedRight: moveLeft,
+        onSwipedLeft: moveRight,
+        preventDefaultTouchmoveEvent: true,
+        trackMouse: true
+    });
     return (
-        <div className="relative min-h-screen overflow-hidden">
+        <div className="relative min-h-screen overflow-hidden" {...swipeHandlers}>
             <button
                 className="absolute top-1/2 left-0 m-4 cursor-pointer p-2 z-10"
-                onClick={() => {
-                    setActiveImage(
-                        (((activeImage - 1) % images.length) + images.length) % images.length
-                    );
-                }}>
+                onClick={moveLeft}>
                 <HiOutlineChevronLeft
                     size={42}
                     className="text-white hover:text-gray-300 transition duration-200"
@@ -43,9 +52,7 @@ const ImageCarousel = ({ images }) => {
             ))}
             <button
                 className="absolute top-1/2 right-0 m-4 rounded-full cursor-pointer p-2 z-10"
-                onClick={() => {
-                    setActiveImage((activeImage + 1) % images.length);
-                }}>
+                onClick={moveRight}>
                 <HiOutlineChevronRight
                     size={42}
                     className="text-white hover:text-gray-300 transition duration-200"
