@@ -1,12 +1,10 @@
-const { urlObjectKeys } = require('next/dist/next-server/lib/utils');
-
 module.exports = {
     purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
     darkMode: false, // or 'media' or 'class'
     theme: {
         extend: {
             backgroundImage: (theme) => ({
-                'footer-bg': "url('/images/cakebg.png')"
+                'footer-bg': "url('/images/footer.jpg')"
             }),
             colors: {
                 cyan: {
@@ -21,7 +19,9 @@ module.exports = {
         }
     },
     variants: {
-        extend: {}
+        extend: {
+            invert: ['hover', 'focus']
+        }
     },
     plugins: []
 };

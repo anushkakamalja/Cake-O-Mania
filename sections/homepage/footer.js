@@ -1,15 +1,20 @@
-// import '../../styles/styles.css';
+import Icons from '../components/icons';
 const Footer = () => {
     return (
-        <footer>
-            <div className="flex flex-col    justify-around items-center container min-w-full h-100 bg-footer-bg">
-                <img src="images/logo.png" alt="logo" className="logo-footer h-80" />
-                <h2 className="italic">Follow Us</h2>
-                <div className=" w-80  flex flex-row justify-around ml-20 mr-20">
-                    <img src="images/youtube.svg" alt="youtube" className="icons" />
-                    <img src="images/insta.svg" alt="youtube" className="icons" />
-                    <img src="images/whatsapp.svg" alt="youtube" className="icons" />
-                    <img src="images/phone.svg" alt="youtube" className="icons" />
+        <footer className="min-w-full bg-footer-bg bg-no-repeat bg-cover h-200">
+            <div className="flex flex-row  justify-between items-center min-w-full h-180">
+                <div className="w-1/3 mx-auto"></div>
+                {/* <div className="flex flex-row justify-between border-black border-2"> */}
+                <div mx-auto my-6>
+                    <img src="images/logo.png" alt="logo" className="logo-footer h-80" />
+                    <h1 className="font-header text-center mt-4 mb-4  text-2xl">
+                        Have a good day !!!
+                    </h1>
+                </div>
+                <div className="mx-auto my-auto">
+                    <h2 className="font-header text-6xl text-center">Follow Us</h2>
+                    <Icons />
+                    {/* </div> */}
                 </div>
             </div>
         </footer>
