@@ -5,7 +5,7 @@ module.exports = {
         extend: {
             colors: {
                 cyan: {
-                    DEFAULT: '#5fcac7'
+                    100: '#5fcac7'
                 }
             },
             fontFamily: {
@@ -16,7 +16,9 @@ module.exports = {
         }
     },
     variants: {
-        extend: {}
+        extend: {
+            display: ['group-hover']
+        }
     },
     plugins: []
 };
