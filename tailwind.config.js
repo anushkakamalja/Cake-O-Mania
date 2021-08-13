@@ -27,13 +27,12 @@ module.exports = {
             pink: colors.pink,
             rose: colors.rose,
             white: colors.white,
-            black: colors.black
+            black: colors.black,
             myCyan: {
                 100: '#5fcac7'
             }
         },
         extend: {
-
             fontFamily: {
                 header: ['Merienda One'],
                 body: ['ABeeZee'],
