@@ -3,11 +3,11 @@ import Image from 'next/image';
 
 const Header = () => {
     return (
-        <header>
+        <header className="fixed top-0 left-0 w-full z-20">
             <div className="flex flex-row z-20">
                 <div className="w-full flex flex-row justify-around font-header text-xl  ">
                     <div className="  flex flex-row justify-around  w-1/3 content-around text-right pt-12 ">
-                        <div className="py-4 px-2 hover:text-mymyCyan-100 cursor-pointer ">
+                        <div className="py-4 px-2 hover:text-myCyan-100 cursor-pointer ">
                             <a > Home</a>
                         </div>
                         <div className="py-4 px-2 hover:text-myCyan-100 cursor-pointer">
