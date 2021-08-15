@@ -34,7 +34,8 @@ module.exports = {
                 header: ['Merienda One'],
                 body: ['ABeeZee'],
                 hero: ['Leckerli One']
-            }
+            },
+            
         }
     },
     variants: {
