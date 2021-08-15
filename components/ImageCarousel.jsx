@@ -38,7 +38,7 @@ const ImageCarousel = ({ images }) => {
         trackMouse: true
     });
     return (
-        <div className="relative min-h-screen overflow-hidden" {...swipeHandlers}>
+        <div className="relative min-h-screen overflow-hidden rounded-xl p-8" {...swipeHandlers}>
             <button
                 className="absolute top-1/2 left-0 m-4 cursor-pointer p-2 z-10"
                 onClick={moveLeft}>
