@@ -1,4 +1,4 @@
-import Footer from '../sections/homepage/footer';
+import Footer from '../sections/homepage/Footer';
 
 export default function Home() {
     return (
