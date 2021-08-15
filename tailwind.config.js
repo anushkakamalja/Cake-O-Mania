@@ -30,6 +30,9 @@ module.exports = {
             black: colors.black
         },
         extend: {
+            backgroundImage: (theme) => ({
+                'footer-bg': "url('/images/footer.jpg')"
+            }),
             fontFamily: {
                 header: ['Merienda One'],
                 body: ['ABeeZee'],
@@ -38,7 +41,9 @@ module.exports = {
         }
     },
     variants: {
-        extend: {}
+        extend: {
+            invert: ['hover', 'focus']
+        }
     },
     plugins: []
 };
