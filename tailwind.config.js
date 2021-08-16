@@ -30,6 +30,12 @@ module.exports = {
             black: colors.black,
             myCyan: {
                 100: '#5fcac7'
+            },
+            brown: {
+                100: '#4b4342'
+            },
+            lightPink: {
+                100: '#ff91a4'
             }
         },
         extend: {
