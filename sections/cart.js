@@ -14,10 +14,10 @@ const Cart = () => {
                     src={bg}
                     alt="bg"
                     width={1650}
-                    height={350}
+                    height={500}
                 />
             </div>
-            <div className="absolute w-1/5  left-40 mx-96 font-header text-center  text-7xl h-40 z-40 -mt-44">
+            <div className="absolute w-4/5  left-40  font-header text-center  text-7xl h-40 z-40 -mt-52">
                 <h1 className="text-white ">Cart</h1>
                 <p></p>
             </div>
@@ -241,29 +241,31 @@ const Cart = () => {
                     </tbody>
                 </table>
             </div>
-            <div className=" w-1/3 float-right mr-36  mb-4 ">
-                <h2 className="p-2 font-header text-lg text-brown-100 font-semibold	">
-                    Cart totals
-                </h2>
-                <hr />
-                <div className="flex flex-row justify-between p-2 font-body text-base text-brown-100 font-semibold w-full ">
-                    <p>Subtotal</p>
-                    <p className="">₹ 1650</p>
+            <div className="flex flex-row-reverse">
+                <div className=" w-1/3  mr-36  mb-4 ">
+                    <h2 className="p-2 font-header text-lg text-brown-100 font-semibold	">
+                        Cart totals
+                    </h2>
+                    <hr />
+                    <div className="flex flex-row justify-between p-2 font-body text-base text-brown-100 font-semibold w-full ">
+                        <p>Subtotal</p>
+                        <p className="">₹ 1650</p>
+                    </div>
+                    <div className="flex flex-row justify-between p-2 font-body text-base text-brown-100 font-semibold">
+                        <p>Offer</p>
+                        <p>- ₹ 50</p>
+                    </div>
+                    <hr />
+                    <div className="flex flex-row justify-between p-2 font-body text-base text-brown-100 font-semibold">
+                        <p>Total</p>
+                        <p className="text-myCyan-100">₹ 1600</p>
+                    </div>
+                    <hr />
+                    <button className="bg-lightPink-100 m-2 mt-6 float-right rounded-full px-5 py-2 text-white text-base hover:bg-myCyan-100 transition-colors duration-200 ease-in-out">
+                        Proceed to checkout
+                    </button>
                 </div>
-                <div className="flex flex-row justify-between p-2 font-body text-base text-brown-100 font-semibold">
-                    <p>Offer</p>
-                    <p>- ₹ 50</p>
-                </div>
-                <hr />
-                <div className="flex flex-row justify-between p-2 font-body text-base text-brown-100 font-semibold">
-                    <p>Total</p>
-                    <p className="text-myCyan-100">₹ 1600</p>
-                </div>
-                <hr />
-                <button className="bg-lightPink-100 m-2 mt-6 float-right rounded-full px-5 py-2 text-white text-base hover:bg-myCyan-100 transition-colors duration-200 ease-in-out">
-                    Proceed to checkout
-                </button>
-            </div>
+            </div>{' '}
         </div>
     );
 };
