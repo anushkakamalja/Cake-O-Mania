@@ -39,9 +39,10 @@ module.exports = {
             }
         },
         extend: {
-            backgroundImage: (theme) => ({
-                'footer-bg': "url('/images/footer.jpg')"
-            }),
+            backgroundImage: {
+                'footer-bg': "url('/images/footer.jpg')",
+                'video-bg': "url('/images/video_bg4.png')"
+            },
             fontFamily: {
                 header: ['Merienda One'],
                 body: ['ABeeZee'],
