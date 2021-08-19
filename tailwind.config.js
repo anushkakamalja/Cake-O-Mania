@@ -5,7 +5,9 @@ module.exports = {
     theme: {
         stroke: (theme) => ({
             cyan: theme('colors.myCyan.100'),
-            choco: theme('colors.mybrown.100')
+            choco: theme('colors.mybrown.100'),
+            pink: theme('colors.mypink.100'),
+            white: theme('colors.white.100')
         }),
 
         colors: {
@@ -38,6 +40,9 @@ module.exports = {
             },
             mybrown: {
                 100: '#4b4342'
+            },
+            mypink: {
+                100: '#ff91a4'
             }
         },
         extend: {
@@ -60,7 +65,8 @@ module.exports = {
     variants: {
         extend: {
             invert: ['hover', 'focus'],
-            display: ['group-hover']
+            display: ['group-hover'],
+            fill: ['hover', 'focus']
         }
     },
     plugins: []
