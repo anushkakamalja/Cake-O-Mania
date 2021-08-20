@@ -2,10 +2,10 @@ import React from 'react';
 import { FaAngleUp } from 'react-icons/fa';
 const Top = () => {
     return (
-        <div className="fixed bottom-20 right-20">
+        <div className="fixed bottom-20 bg-none right-20">
             <a href="#top">
                 <div className="flex flex-col w-20 h-20 ">
-                    <div className="absolute top-4 text-mypink-100 transform transition duration-500 hover:scale-150">
+                    <div className="absolute top-4  text-mypink-100 transform transition duration-500 hover:scale-150">
                         <FaAngleUp
                             className="ml-4 mr-4 transform transition duration-500"
                             size={45}
@@ -16,9 +16,9 @@ const Top = () => {
                         y="0px"
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 500 500"
-                        className="stroke-8 text-white fill-current  filter backdrop-opacity-0 w-30 h-30 ">
+                        className="stroke-8 text-transparent fill-current filter backdrop-opacity-0 w-30 h-30 ">
                         <path
-                            className="stroke-pink "
+                            className="stroke-pink"
                             d="M488.5,274.5L488.5,274.5l1.8-0.5l-2,0.5c-2.4-8.7-4.5-16.9-4.5-24.5c0-8,2.3-16.5,4.7-25.5
 			c3.5-13,7.1-26.5,3.7-39.5c-3.6-13.2-13.5-23.1-23.1-32.7c-6.5-6.5-12.6-12.6-16.6-19.4c-3.9-6.8-6.1-15.2-8.5-24.1
 			c-3.5-13.1-7.1-26.7-16.7-36.3c-9.5-9.5-22.9-13.1-35.9-16.6c-9-2.4-17.5-4.6-24.4-8.7c-6.5-3.8-12.5-9.8-18.9-16.2
