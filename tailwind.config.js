@@ -9,6 +9,11 @@ module.exports = {
             pink: theme('colors.mypink.100'),
             white: theme('colors.white.100')
         }),
+        fill: (theme) => ({
+            mypink: theme('colors.mypink.100'),
+            white: theme('colors.white'),
+            transparent: theme('colors.transparent')
+        }),
 
         colors: {
             transparent: 'transparent',
