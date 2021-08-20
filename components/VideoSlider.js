@@ -19,17 +19,15 @@ const SlideShow = ({ src, isOpen }) => {
                 leave="transition-opacityduration-500"
                 leaveFrom="opacity-100 "
                 leaveTo="opacity-0 scale-100">
-                
                 <iframe
-                className="  "
-                width="696"
-                height="420"
-                src={link}
-                title="YouTube video player"
-                frameBorder="0"
-                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                allowFullScreen></iframe>
-               
+                    className=" rounded   border-black border-2"
+                    width="682"
+                    height="428"
+                    src={link}
+                    title="YouTube video player"
+                    frameBorder="0"
+                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                    allowFullScreen></iframe>
             </Transition>
         </>
     );
@@ -66,7 +64,7 @@ const VideoCarousel = () => {
     });
     return (
         <div
-            className=" max-w-full left-14 -top-4 my-16  cursor-move p-4  relative "
+            className=" max-w-full left-7 -top-4 my-16  cursor-move   relative "
             {...swipeHandlers}>
             {videoList.map((video, number) => (
                 <SlideShow src={video} key={video.id} isOpen={index === number} />
