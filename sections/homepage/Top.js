@@ -4,7 +4,7 @@ const Top = () => {
     return (
         <div className="fixed bottom-40   right-40">
             <a href="#top">
-                <div className="flex flex-col items-center w-32 h-32 absolute   text-mypink-100 transform transition duration-500 hover:scale-200 hover:text-white hover:fill-mypink">
+                <div className="flex flex-col items-center w-32 h-32 absolute   text-mypink-100 transform transition  hover:scale-200 hover:text-white hover:fill-mypink">
                     <svg
                         x="0px"
                         y="0px"
