@@ -10,7 +10,7 @@ const Top = () => {
                         y="0px"
                         xmlns="http://www.w3.org/2000/svg"
                         viewBox="0 0 500 500"
-                        className="stroke-8  fill-transparent w-30 h-30 hover:fill-mypink hover:scale-200  ">
+                        className="stroke-8  fill-transparent w-30 h-30 hover:fill-mypink">
                         <path
                             className="stroke-pink"
                             d="M488.5,274.5L488.5,274.5l1.8-0.5l-2,0.5c-2.4-8.7-4.5-16.9-4.5-24.5c0-8,2.3-16.5,4.7-25.5

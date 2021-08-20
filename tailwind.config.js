@@ -12,7 +12,8 @@ module.exports = {
         fill: (theme) => ({
             mypink: theme('colors.mypink.100'),
             white: theme('colors.white'),
-            transparent: theme('colors.transparent')
+            transparent: theme('colors.transparent'),
+            cyan: theme('colors.myCyan.100')
         }),
 
         colors: {
