@@ -4,8 +4,8 @@ import Header from '../sections/homepage/Header';
 import Footer from '../sections/homepage/Footer';
 import { BsSearch } from 'react-icons/bs';
 import CakeItem from '../components/CakeItem';
+import CakeItemList from '../components/CakeItemList';
 import Cart from '../components/Cart';
-import { BiCheckbox } from 'react-icons/bi';
 import { AiFillCaretDown } from 'react-icons/ai';
 import cakeList from '../assets/data/cakedata';
 import React, { useState } from 'react';
@@ -13,10 +13,6 @@ import React, { useState } from 'react';
 const Shop = () => {
     const [addedtoCart, setAddedtoCart] = useState(false);
     const [filteredCakes, setFilteredCakes] = useState([]);
-
-    const func = () => {
-        cakeLis;
-    };
 
     return (
         <div>
@@ -82,18 +78,8 @@ const Shop = () => {
                 </div>
             </div>
             <div className="flex md:flex-row flex-col justify-center ">
-                <div className="flex  justify-center">
-                    <div className="grid md:grid-cols-3 sm:grid-cols-2 gap-12 pl-8 pb-8 ">
-                        {cakeList.map((cakeData) => (
-                            <CakeItem
-                                src={cakeData}
-                                key={cakeData.id}
-                                addedtoCart={addedtoCart}
-                                setAddedtoCart={setAddedtoCart}
-                            />
-                        ))}
-                    </div>
-                </div>
+                <CakeItemList />
+
                 <div className="pl-20 flex justify-center">
                     <div className="flex flex-col">
                         <Cart />
