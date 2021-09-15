@@ -49,15 +49,19 @@ module.exports = {
                 100: '#4b4342'
             },
             mypink: {
+
                 100: '#ff91a4'
             }
         },
         extend: {
+
             backgroundImage: (theme) => ({
                 'footer-bg': "url('/images/footer.jpg')",
                 spec: "url('/images/spec.jpg')",
-                'cake-bg': "url('/images/cakedivider.png')"
+                'cake-bg': "url('/images/cakedivider.png')",
+                'video-bg': "url('/images/video_bg4.png')"
             }),
+
             fontFamily: {
                 header: ['Merienda One'],
                 body: ['ABeeZee'],
