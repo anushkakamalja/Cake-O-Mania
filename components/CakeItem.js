@@ -1,18 +1,14 @@
-import React from "react";
+import React from 'react';
 import Image from 'next/image';
 import cakeImageGrid from '../assets/images/cake1.jpg';
 import { FaStar } from 'react-icons/fa';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 
-const CakeItem = ({ src, addedtoCart, setAddedtoCart }) => {
-    
+const CakeItem = ({ src, setAddedtoCart }) => {
     const { id, image, ratings, old_price, new_price, cake_name } = src;
-    console.log(addedtoCart);
-
     const clickHandler = () => {
-        setAddedtoCart(!addedtoCart);
+        
     };
-
     return (
         <div className="w-64 justify-center pb-10 rounded-2xl shadow-lg">
             <div className="pb-2">
@@ -32,7 +28,7 @@ const CakeItem = ({ src, addedtoCart, setAddedtoCart }) => {
                 <text className="line-through text-gray-400 pr-2">₹{old_price}</text>
                 <text>₹{new_price}</text>
             </div>
-            <div className="flex flex-row justify-center  mt-2 " onClick={clickHandler}>
+            <div className="flex flex-row justify-center  mt-2 ">
                 <button className="font-header text-sm flex justify-center items-center px-2 hover:text-rose-400 border-2 rounded-xl border-gray-150">
                     <text className="px-2">Add to cart </text>
                     <AiOutlineShoppingCart />

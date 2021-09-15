@@ -3,16 +3,22 @@ import cakeImage from '../assets/images/shop.png';
 import Header from '../sections/homepage/Header';
 import Footer from '../sections/homepage/Footer';
 import { BsSearch } from 'react-icons/bs';
-import CakeItem from '../components/CakeItem';
 import CakeItemList from '../components/CakeItemList';
 import Cart from '../components/Cart';
 import { AiFillCaretDown } from 'react-icons/ai';
 import cakeList from '../assets/data/cakedata';
-import React, { useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
 const Shop = () => {
-    const [addedtoCart, setAddedtoCart] = useState(false);
-    const [filteredCakes, setFilteredCakes] = useState([]);
+    const [addedtoCart, setAddedtoCart] = useState("notadded");
+    const [allCakes, setAllCakes] = useState([]);
+    const [cartCakes, setCartCakes] = useState([]);
+
+    useEffect(() => {
+        setAllCakes(cakeList);
+    }, []);
+
+    console.log(allCakes);
 
     return (
         <div>
@@ -78,11 +84,10 @@ const Shop = () => {
                 </div>
             </div>
             <div className="flex md:flex-row flex-col justify-center ">
-                <CakeItemList />
-
+                <CakeItemList allCakes={allCakes} setAddedtoCart={setAddedtoCart}/>
                 <div className="pl-20 flex justify-center">
                     <div className="flex flex-col">
-                        <Cart />
+                        <Cart cartCakes={cartCakes} addedtoCart={addedtoCart} setAddedtoCart={setAddedtoCart} setCartCakes={setCartCakes}/>
                         <div className="w-64 h-32 justify-center rounded-2xl border-4 mb-10 border-gray-200 relative">
                             <text className="font-header text-3xl absolute top-1/3 left-10">
                                 Price Filter

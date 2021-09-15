@@ -5,6 +5,7 @@ const cake = [
         ratings: 5,
         old_price: 84,
         new_price: 70,
+        cart : 'notadded',
         cake_name: 'First'
     },
     {
@@ -13,6 +14,7 @@ const cake = [
         ratings: 5,
         old_price: 90,
         new_price: 85,
+        cart : 'notadded',
         cake_name: 'Second'
     },
     {
@@ -21,6 +23,7 @@ const cake = [
         ratings: 5,
         old_price: 84,
         new_price: 70,
+        cart : 'notadded',
         cake_name: 'Third'
     },
     {
@@ -29,6 +32,7 @@ const cake = [
         ratings: 5,
         old_price: 84,
         new_price: 70,
+        cart : 'notadded',
         cake_name: 'Fourth'
     },
     {
@@ -37,6 +41,7 @@ const cake = [
         ratings: 5,
         old_price: 84,
         new_price: 70,
+        cart : 'notadded',
         cake_name: 'Fifth'
     },
     {
@@ -45,6 +50,7 @@ const cake = [
         ratings: 5,
         old_price: 84,
         new_price: 70,
+        cart : 'notadded',
         cake_name: 'Sixth'
     },
     {
@@ -53,6 +59,7 @@ const cake = [
         ratings: 5,
         old_price: 84,
         new_price: 70,
+        cart : 'notadded',
         cake_name: 'Seventh'
     },
     {
@@ -61,6 +68,7 @@ const cake = [
         ratings: 5,
         old_price: 84,
         new_price: 70,
+        cart : 'notadded',
         cake_name: 'Eighth'
     }
 ];
