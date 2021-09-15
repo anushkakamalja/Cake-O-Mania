@@ -3,7 +3,21 @@ module.exports = {
     purge: ['./pages/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
     darkMode: false, // or 'media' or 'class'
     theme: {
+        stroke: (theme) => ({
+            cyan: theme('colors.myCyan.100'),
+            choco: theme('colors.mybrown.100'),
+            pink: theme('colors.mypink.100'),
+            white: theme('colors.white.100')
+        }),
+        fill: (theme) => ({
+            mypink: theme('colors.mypink.100'),
+            white: theme('colors.white'),
+            transparent: theme('colors.transparent'),
+            cyan: theme('colors.myCyan.100')
+        }),
+
         colors: {
+            transparent: 'transparent',
             blueGray: colors.blueGray,
             coolGray: colors.coolGray,
             gray: colors.gray,
@@ -30,23 +44,36 @@ module.exports = {
             black: colors.black,
             myCyan: {
                 100: '#5fcac7'
+            },
+            mybrown: {
+                100: '#4b4342'
+            },
+            mypink: {
+                100: '#ff91a4'
             }
         },
         extend: {
             backgroundImage: (theme) => ({
-                'footer-bg': "url('/images/footer.jpg')"
+                'footer-bg': "url('/images/footer.jpg')",
+                spec: "url('/images/spec.jpg')",
+                'cake-bg': "url('/images/cakedivider.png')"
             }),
             fontFamily: {
                 header: ['Merienda One'],
                 body: ['ABeeZee'],
                 hero: ['Leckerli One']
+            },
+            strokeWidth: {
+                6: '6',
+                8: '8'
             }
         }
     },
     variants: {
         extend: {
             invert: ['hover', 'focus'],
-            display: ['group-hover']
+            display: ['group-hover'],
+            fill: ['hover', 'focus']
         }
     },
     plugins: []
