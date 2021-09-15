@@ -6,6 +6,7 @@ import Specialities from '../sections/homepage/Specialities';
 import Top from '../sections/homepage/Top';
 import Video from '../sections/homepage/YoutubeVideo';
 
+
 export default function Home() {
     return (
         <div>
