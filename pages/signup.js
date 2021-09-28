@@ -5,7 +5,7 @@ const Login = () => {
             <div className="p-10 w-full text-center ">
                 <div className="font-bold  ">
                     <p className="text-3xl my-4 font-body">Welcome to Cake-o-Mania!</p>
-                    <h2 className="text-5xl my-4 font-header">Sign Up</h2>
+                    <h2 className="text-5xl my-4 font-body">Sign Up</h2>
                 </div>
                 <form className=" flex flex-col h-full" action="" method="POST">
                     <div className="pt-2 block  flex flex-col items-center">
@@ -51,7 +51,7 @@ const Login = () => {
 
                     <div>
                         <button
-                            className="transition duration-500 ease-in-out text-xl font-header rounded-2xl m-4 px-4 py-2 bg-black text-white hover:bg-myCyan-100 transform hover:-translate-y-1 hover:scale-110 "
+                            className="transition duration-500 ease-in-out text-xl font-body rounded-2xl m-4 px-4 py-2 bg-black text-white hover:bg-myCyan-100 transform hover:-translate-y-1 hover:scale-110 "
                             type="submit"
                             id="login-button">
                             Sign Up
@@ -65,7 +65,7 @@ const Login = () => {
                         <div className="">
                             <a href="/auth/google">
                                 <button
-                                    className=" transition duration-500 ease-in-out text-xl font-header rounded-2xl m-4 px-4 py-2 bg-black text-white hover:bg-myCyan-100 transform hover:-translate-y-1 hover:scale-110 "
+                                    className=" transition duration-500 ease-in-out text-xl font-body rounded-2xl m-4 px-4 py-2 bg-black text-white hover:bg-myCyan-100 transform hover:-translate-y-1 hover:scale-110 "
                                     type="submit">
                                     Sign Up with Google
                                 </button>
@@ -76,7 +76,7 @@ const Login = () => {
                             <p>
                                 <a
                                     href="/signup"
-                                    className="p-1 underline transform transition duration-500 hover:scale-110 hover:bg-black hover:text-white ">
+                                    className="p-2 underline transform transition duration-500 hover:scale-110 hover:bg-black hover:text-white rounded">
                                     Log In Here!
                                 </a>
                             </p>
