@@ -65,9 +65,6 @@ const SellerItems = ({ description, name, img, rank }) => {
 };
 
 const checkRank = ({ rank }) => {
-    {
-        console.log('CheckRank ' + rank);
-    }
     if (rank == 1) {
         return <BsAwardFill className="text-yellow-400 " size={50} />;
     } else if (rank === 2) {
