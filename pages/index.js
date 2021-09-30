@@ -5,6 +5,7 @@ import Reviews from '../sections/homepage/Reviews';
 import Specialities from '../sections/homepage/Specialities';
 import Top from '../sections/homepage/Top';
 import Video from '../sections/homepage/YoutubeVideo';
+import BestSellers from '../components/BestSellers';
 
 
 export default function Home() {
@@ -13,6 +14,7 @@ export default function Home() {
             <Header />
             <Hero />
             <Specialities />
+            <BestSellers/>
             <Reviews />
             <Video />
             <Footer />
