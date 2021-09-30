@@ -68,7 +68,7 @@ const VideoCarousel = () => {
             {...swipeHandlers}>
             <div className="flex mx-auto max-width-md">
                 {videoList.map((video, number) => (
-                    <SlideShow src={video} key={video.id} isOpen={index === number} />
+                    <SlideShow src={video} key={video.link} isOpen={index === number} />
                 ))}
             </div>
             <div className="">

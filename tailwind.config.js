@@ -52,19 +52,22 @@ module.exports = {
                 100: '#4b4342'
             },
             mypink: {
-
                 100: '#ff91a4'
+            },
+            mygrey: {
+                100: '#edecec',
+                200: '#f8f8f8'
             }
         },
-        extend: {
 
+        extend: {
             backgroundImage: (theme) => ({
                 'footer-bg': "url('/images/footer.jpg')",
                 'spec': "url('/images/spec.jpg')",
                 'cake-bg': "url('/images/cakedivider.png')",
                 'video-bg': "url('/images/video_bg4.png')",
                 'login-bg': "url('/images/login_bg.jpeg')"
-
+                'checkout-bg': "url('/images/donuts.jpg')"
             }),
 
             fontFamily: {
