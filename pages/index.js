@@ -6,7 +6,7 @@ import Specialities from '../sections/homepage/Specialities';
 import Top from '../sections/homepage/Top';
 import Video from '../sections/homepage/YoutubeVideo';
 import BestSellers from '../components/BestSellers';
-
+import HappyHours from '../components/HappyHours';
 
 export default function Home() {
     return (
@@ -14,7 +14,8 @@ export default function Home() {
             <Header />
             <Hero />
             <Specialities />
-            <BestSellers/>
+            <BestSellers />
+            <HappyHours />
             <Reviews />
             <Video />
             <Footer />
