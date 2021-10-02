@@ -1,6 +1,20 @@
+import React from 'react';
+import { useForm } from 'react-hook-form';
 import { FcGoogle } from 'react-icons/fc';
 
 const Login = () => {
+    const {
+        register,
+        handleSubmit,
+        formState: { errors: formErrors }
+    } = useForm();
+    const [buttonDisabled, setButtonDisabled] = React.useState(false);
+
+    const submitHandler = (data) => {
+        setButtonDisabled(true);
+        console.log(data);
+        setButtonDisabled(false);
+    };
     return (
         <div className="flex min-h-screen">
             <img src="/images/login_bg.jpeg" alt="Cake" className="hidden md:block max-h-screen" />
@@ -11,25 +25,39 @@ const Login = () => {
                 <h3 className="text-3xl md:text-5xl text-center mt-2 font-body font-bold">
                     Log into your account
                 </h3>
-                <form className="flex flex-col items-center pt-2 md:pt-8 w-full">
+                <form
+                    onSubmit={handleSubmit(submitHandler)}
+                    className="flex flex-col items-center pt-2 md:pt-8 w-full max-w-md mx-auto">
                     <input
-                        className="font-body my-2 py-2 px-4 block w-full max-w-md rounded text-lg focus:ring-2 focus:border-transparent focus:ring-pink-500 outline-none border-2 border-gray-300 placeholder-gray-500"
+                        {...register('email', {
+                            required: { value: true, message: 'Email is required' },
+                            maxLength: 30
+                        })}
+                        className="font-body mt-2 py-2 px-4 block w-full rounded text-lg focus:ring-2 focus:border-transparent focus:ring-pink-500 outline-none border-2 border-gray-300 placeholder-gray-500"
                         type="email"
-                        name=""
-                        id=""
                         placeholder="Email"
                     />
+                    {formErrors.email && (
+                        <p className="text-red-500 self-start pt-2">{formErrors.email.message}</p>
+                    )}
                     <input
-                        className="font-body my-2 py-2 px-4 block w-full max-w-md rounded text-lg focus:ring-2 focus:border-transparent focus:ring-pink-500 outline-none border-2 border-gray-300 placeholder-gray-500"
+                        {...register('password', {
+                            required: { value: true, message: 'Password is required' }
+                        })}
+                        className="font-body mt-2 py-2 px-4 block w-full rounded text-lg focus:ring-2 focus:border-transparent focus:ring-pink-500 outline-none border-2 border-gray-300 placeholder-gray-500"
                         type="password"
-                        name=""
-                        id=""
                         placeholder="Password"
                     />
+                    {formErrors.password && (
+                        <p className="text-red-500 self-start pt-2">
+                            {formErrors.password.message}
+                        </p>
+                    )}
                     <input
                         type="submit"
                         value="Login"
-                        className="font-body font-semibold tracking-wider w-full max-w-md uppercase py-2 md:py-4 px-4 md:px-6 mt-4 rounded bg-black text-white text-lg md:text-xl transition duration-500 hover:bg-gray-600 cursor-pointer"
+                        className="font-body font-semibold tracking-wider disabled:bg-gray-400 w-full max-w-md uppercase py-2 md:py-4 px-4 md:px-6 mt-4 rounded bg-black text-white text-lg md:text-xl transition duration-500 hover:bg-gray-600 cursor-pointer"
+                        disabled={buttonDisabled || Object.keys(formErrors).length !== 0}
                     />
                     <div className="flex pt-6 justify-between w-full max-w-md">
                         <a

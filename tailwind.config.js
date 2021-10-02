@@ -81,7 +81,8 @@ module.exports = {
         extend: {
             invert: ['hover', 'focus'],
             display: ['group-hover'],
-            fill: ['hover', 'focus']
+            fill: ['hover', 'focus'],
+            backgroundColor: ['disabled']
         }
     },
     plugins: []
