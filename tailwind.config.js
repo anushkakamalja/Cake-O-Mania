@@ -15,10 +15,6 @@ module.exports = {
             transparent: theme('colors.transparent'),
             cyan: theme('colors.myCyan.100')
         }),
-        boxShadow: {
-            inner: 'inset 0 0 0 2 #000000'
-        },
-
         colors: {
             transparent: 'transparent',
             blueGray: colors.blueGray,
