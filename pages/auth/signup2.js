@@ -144,7 +144,7 @@ const SignUp = () => {
                         Or continue with
                     </p>
                     <a
-                        href={`${process.env.NEXT_PUBLIC_BASE_URL}/auth/google/signup`}
+                        href={`${process.env.NEXT_PUBLIC_SERVER_URL}/auth/google/signup`}
                         className="flex items-center space-between py-2 px-4 m-2 bg-white text-black hover:bg-gray-400 transition-all duration-500 rounded shadow-2xl border-2 border-gray-600 text-base font-semibold font-body cursor-pointer">
                         <FcGoogle
                             style={{ display: 'inline-block', marginRight: '8px' }}
