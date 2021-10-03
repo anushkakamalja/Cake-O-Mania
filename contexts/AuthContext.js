@@ -1,18 +1,17 @@
 import React from 'react';
-import useLocalStorage from '../hooks/useLocalStorage';
 import Api from '../adapters/Api';
 import { checkAuthWithServer } from '../adapters/auth';
 import { useQuery } from 'react-query';
 import PageLoader from '../components/PageLoader';
+import createPersistedState from 'use-persisted-state';
 
+const useTokenState = createPersistedState('token');
 const AuthContext = React.createContext(undefined);
 
 const AuthProvider = ({ children }) => {
-    const [token] = useLocalStorage('token', '');
+    const [token] = useTokenState('');
+    Api.defaults.headers.Authorization = `Bearer ${token}`;
     const { isLoading, isError, data } = useQuery(['checkAuth', token], checkAuthWithServer);
-    React.useEffect(() => {
-        Api.defaults.headers.Authorization = `Bearer ${token}`;
-    }, [token]);
 
     if (isLoading) return <PageLoader />;
     if (isError) {

@@ -6,9 +6,9 @@ const queryClient = new QueryClient();
 function MyApp({ Component, pageProps }) {
     return (
         <QueryClientProvider client={queryClient}>
-            {/* <AuthProvider> */}
-            <Component {...pageProps} />
-            {/* </AuthProvider> */}
+            <AuthProvider>
+                <Component {...pageProps} />
+            </AuthProvider>
         </QueryClientProvider>
     );
 }
