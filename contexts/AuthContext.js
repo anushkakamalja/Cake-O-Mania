@@ -11,7 +11,10 @@ const AuthContext = React.createContext(undefined);
 const AuthProvider = ({ children }) => {
     const [token] = useTokenState('');
     Api.defaults.headers.Authorization = `Bearer ${token}`;
-    const { isLoading, isError, data } = useQuery(['checkAuth', token], checkAuthWithServer);
+    const { isLoading, isError, data } = useQuery(['checkAuth', token], checkAuthWithServer, {
+        retry: false,
+        staleTime: 5 * 60 * 1000
+    });
 
     if (isLoading) return <PageLoader />;
     if (isError) {
