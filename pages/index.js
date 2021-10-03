@@ -7,14 +7,13 @@ import Top from '../sections/homepage/Top';
 import Video from '../sections/homepage/YoutubeVideo';
 import BestSellers from '../components/BestSellers';
 
-
 export default function Home() {
     return (
         <div>
             <Header />
             <Hero />
             <Specialities />
-            <BestSellers/>
+            <BestSellers />
             <Reviews />
             <Video />
             <Footer />

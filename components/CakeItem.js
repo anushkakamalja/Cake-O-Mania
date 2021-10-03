@@ -4,11 +4,9 @@ import cakeImageGrid from '../assets/images/cake1.jpg';
 import { FaStar } from 'react-icons/fa';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 
-const CakeItem = ({ src, setAddedtoCart }) => {
-    const { id, image, ratings, old_price, new_price, cake_name } = src;
-    const clickHandler = () => {
-        
-    };
+const CakeItem = ({ src }) => {
+    const { old_price, new_price, cake_name } = src;
+    // const clickHandler = () => {};
     return (
         <div className="w-64 justify-center pb-10 rounded-2xl shadow-lg">
             <div className="pb-2">

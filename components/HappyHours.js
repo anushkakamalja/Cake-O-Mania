@@ -1,4 +1,3 @@
-import react from 'react';
 import { useState, useEffect } from 'react';
 import cakeImage from '../assets/images/cake4.jpg';
 import cakeDivider from '../assets/images/cakedivider.png';

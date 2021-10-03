@@ -5,7 +5,6 @@ import cakedivider from '../assets/images/cakedivider.png';
 import { BsAwardFill } from 'react-icons/bs';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { FaStar } from 'react-icons/fa';
-import { useState, useEffect } from 'react';
 
 const BestSellers = () => {
     return (

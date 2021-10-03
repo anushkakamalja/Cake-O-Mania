@@ -7,7 +7,6 @@ export default function CartPage() {
             <Header className="z-20" />
             <Cart />
             <Footer />
-            
         </div>
     );
 }
