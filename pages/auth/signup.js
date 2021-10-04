@@ -1,6 +1,13 @@
 import React from 'react';
+import { signUp } from '../../adapters/auth';
 import { useForm } from 'react-hook-form';
 import { FcGoogle } from 'react-icons/fc';
+import { useMutation } from 'react-query';
+import { useRouter } from 'next/dist/client/router';
+import link from '../../link';
+
+const signUpWrapper = async (data) =>
+    (await signUp(data.email, data.password, data.firstName, data.lastName, data.mobileNo)).data;
 
 const SignUp = () => {
     const {
@@ -9,13 +16,21 @@ const SignUp = () => {
         watch,
         formState: { errors: formErrors }
     } = useForm();
-    const [buttonDisabled, setButtonDisabled] = React.useState(false);
+    const router = useRouter();
 
+    const mutation = useMutation(signUpWrapper, {
+        retry: false,
+        onSuccess: async () => {
+            await router.push(link.login);
+        },
+        onError: async (error) => {
+            alert(error?.response.data.message);
+        }
+    });
     const submitHandler = (data) => {
-        setButtonDisabled(true);
-        console.log(data);
-        setButtonDisabled(false);
+        mutation.mutate(data);
     };
+
     return (
         <div className="flex h-screen overflow-hidden">
             <img src="/images/login_bg.jpeg" alt="Cake" className="hidden md:block max-h-screen" />
@@ -79,6 +94,27 @@ const SignUp = () => {
                         </p>
                     )}
                     <input
+                        {...register('mobileNo', {
+                            required: { value: true, message: 'Mobile number is required' },
+                            minLength: {
+                                value: 10,
+                                message: 'Mobile number should have 10 characters'
+                            },
+                            maxLength: {
+                                value: 10,
+                                message: 'Mobile number should have 10 characters'
+                            }
+                        })}
+                        className="font-body mt-2 py-2 px-4 block w-full max-w-md rounded text-lg focus:ring-2 focus:border-transparent focus:ring-pink-500 outline-none border-2 border-gray-300 placeholder-gray-500"
+                        type="text"
+                        placeholder="Mobile No"
+                    />
+                    {formErrors.mobileNo && (
+                        <p className="text-red-500 self-start pt-2">
+                            {formErrors.mobileNo.message}
+                        </p>
+                    )}
+                    <input
                         {...register('password', {
                             required: { value: true, message: 'Password is required' },
                             minLength: {
@@ -124,7 +160,7 @@ const SignUp = () => {
                     <input
                         type="submit"
                         value="Sign Up"
-                        disabled={buttonDisabled || Object.keys(formErrors).length !== 0}
+                        disabled={mutation.isLoading || Object.keys(formErrors).length !== 0}
                         className="font-body font-semibold disabled:bg-gray-400 tracking-wider w-full max-w-md uppercase py-2 md:py-4 px-4 md:px-6 mt-4 rounded bg-black text-white text-lg md:text-xl transition duration-500 hover:bg-gray-600 cursor-pointer"
                     />
                     <div className="flex flex-col items-center pt-6 w-full max-w-md">

@@ -12,6 +12,6 @@ export const login = (email, password) => {
     return Api.post('auth/login', { email, password });
 };
 
-export const signUp = (email, password, firstName, lastName) => {
-    return Api.post('auth/signup', { email, password, firstName, lastName });
+export const signUp = (email, password, firstName, lastName, mobileNo) => {
+    return Api.post('auth/signup', { email, password, firstName, lastName, mobileNo });
 };
