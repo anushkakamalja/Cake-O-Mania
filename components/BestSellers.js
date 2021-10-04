@@ -38,7 +38,7 @@ const SellerItems = ({ description, name, img, rank }) => {
                     <Image src={img} alt="Image" className="rounded-2xl" />
                 </div>
                 <div className="pb-2">
-                    <text className="font-header text-2xl flex justify-center">{name}</text>
+                    <p className="font-header text-2xl flex justify-center">{name}</p>
                 </div>
                 <div className="flex flex-row justify-center pb-2">
                     <FaStar className="text-yellow-400 " />
@@ -48,11 +48,11 @@ const SellerItems = ({ description, name, img, rank }) => {
                     <FaStar className="text-yellow-400 " />
                 </div>
                 <div className="flex flex-row justify-center pb-2">
-                    <text className=" text-black pr-2">{description}</text>
+                    <p className=" text-black pr-2">{description}</p>
                 </div>
                 <div className="flex flex-row justify-center  mt-2 ">
                     <button className="font-header text-sm flex justify-center items-center px-2 hover:text-rose-400 border-2 rounded-xl border-gray-150">
-                        <text className="px-2">Click to buy</text>
+                        <p className="px-2">Click to buy</p>
                         <AiOutlineShoppingCart />
                     </button>
                 </div>

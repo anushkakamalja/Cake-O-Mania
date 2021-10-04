@@ -32,9 +32,9 @@ const Clock = () => {
 
     return (
         <div className="pt-2">
-            <text className="">
+            <p className="">
                 {currentHours}: {currentMinutes}: {currentSeconds}
-            </text>
+            </p>
         </div>
     );
 };
@@ -46,12 +46,12 @@ const HappyHours = () => {
                 <Image src={cakeImage} />
                 <div className="left-1/3 ml-32 absolute top-1/3 p-8 font-header w-max text-white">
                     <div className="flex flex-col p-3">
-                        <text className=" text-7xl ">Happy Hours</text>
+                        <p className=" text-7xl ">Happy Hours</p>
                     </div>
                     <div className="text-9xl">
                         <Clock />
                     </div>
-                    <text>Everyday at 8pm</text>
+                    <p>Everyday at 8pm</p>
                 </div>
             </div>
         </div>
