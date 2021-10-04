@@ -1,5 +1,5 @@
 export default {
-    home: '',
+    home: '/',
     cart: '/cart_page',
     checkout: '/checkout',
     login: '/auth/login',

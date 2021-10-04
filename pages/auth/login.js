@@ -1,20 +1,38 @@
 import React from 'react';
+import { login } from '../../adapters/auth';
 import { useForm } from 'react-hook-form';
 import { FcGoogle } from 'react-icons/fc';
+import { useMutation } from 'react-query';
+import { useRouter } from 'next/dist/client/router';
+import link from '../../link';
+import createPersistedState from 'use-persisted-state';
 
+const useTokenState = createPersistedState('token');
+
+const loginWrapper = async (data) => (await login(data.email, data.password)).data;
 const Login = () => {
     const {
         register,
         handleSubmit,
         formState: { errors: formErrors }
     } = useForm();
-    const [buttonDisabled, setButtonDisabled] = React.useState(false);
+    const [, setToken] = useTokenState('');
+    const router = useRouter();
 
+    const mutation = useMutation(loginWrapper, {
+        retry: false,
+        onSuccess: async (data) => {
+            await router.push(link.home);
+            setToken(data.token);
+        },
+        onError: async (error) => {
+            alert(error?.response.data.message);
+        }
+    });
     const submitHandler = (data) => {
-        setButtonDisabled(true);
-        console.log(data);
-        setButtonDisabled(false);
+        mutation.mutate(data);
     };
+
     return (
         <div className="flex h-screen overflow-hidden">
             <img src="/images/login_bg.jpeg" alt="Cake" className="hidden md:block max-h-screen" />
@@ -60,7 +78,7 @@ const Login = () => {
                         type="submit"
                         value="Login"
                         className="font-body font-semibold tracking-wider disabled:bg-gray-400 w-full max-w-md uppercase py-2 md:py-4 px-4 md:px-6 mt-4 rounded bg-black text-white text-lg md:text-xl transition duration-500 hover:bg-gray-600 cursor-pointer"
-                        disabled={buttonDisabled || Object.keys(formErrors).length !== 0}
+                        disabled={mutation.isLoading || Object.keys(formErrors).length !== 0}
                     />
                     <div className="flex pt-6 justify-between w-full max-w-md">
                         <a
