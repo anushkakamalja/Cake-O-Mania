@@ -1,5 +1,6 @@
+import react from 'react';
 import { useState, useEffect } from 'react';
-import cakeImage from '../assets/images/cake4.jpg';
+import cakeImage from '../assets/images/Happy hour.png';
 import cakeDivider from '../assets/images/cakedivider.png';
 import Image from 'next/image';
 
@@ -16,7 +17,7 @@ const Clock = () => {
     useEffect(() => {
         if (currentSeconds < 0) {
             setSeconds(59);
-            setMinutes(currentMinutes - 1);
+            setMinutes(60 - date.getMinutes());
         }
         const id = setInterval(timerSeconds, 1000);
         return () => clearInterval(id);
@@ -24,40 +25,33 @@ const Clock = () => {
 
     useEffect(() => {
         if (currentMinutes < 0) {
-            setSeconds(60);
+            setSeconds(59);
             setHour((date.getHours() % 12) + 8);
         }
     }, [currentMinutes]);
 
     return (
-        <div>
-            <div className="font-header text-6xl ">
-                <text className="bg-white text-black">
-                    {currentHours}: {currentMinutes}: {currentSeconds}
-                </text>
-            </div>
+        <div className="pt-2">
+            <p className="">
+                {currentHours}: {currentMinutes}: {currentSeconds}
+            </p>
         </div>
     );
 };
 
 const HappyHours = () => {
     return (
-        <div className="relative flex flex-col shadow-2xl rounded-2xl items-center p-4">
-            <div className="pb-8 flex flex-col ">
-                <text className="font-header md:text-9xl text-5xl text-mybrown-100 ">
-                    Happy Hours
-                </text>
-                <div className="flex justify-center pt-8">
-                    <Image src={cakeDivider} />
-                </div>
-            </div>
-            <div className="flex flex-row">
-                <div>
-                    <Image src={cakeImage} />
-                </div>
-
-                <div className=" bg-black w-1/2">
-                    <Clock />
+        <div className="relative shadow-2xl rounded-2xl items-center">
+            <div>
+                <Image src={cakeImage} />
+                <div className="left-1/3 ml-32 absolute top-1/3 p-8 font-header w-max text-white">
+                    <div className="flex flex-col p-3">
+                        <p className=" text-7xl ">Happy Hours</p>
+                    </div>
+                    <div className="text-9xl">
+                        <Clock />
+                    </div>
+                    <p>Everyday at 8pm</p>
                 </div>
             </div>
         </div>
