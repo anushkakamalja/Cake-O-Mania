@@ -4,5 +4,6 @@ export default {
     checkout: '/checkout',
     login: '/auth/login',
     signup: '/auth/signup',
-    shop: '/auth/shop'
+    shop: '/auth/shop',
+    resetPassword: '/auth/password/reset'
 };

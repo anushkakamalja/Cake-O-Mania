@@ -82,12 +82,12 @@ const Login = () => {
                     />
                     <div className="flex pt-6 justify-between w-full max-w-md">
                         <a
-                            href="/"
+                            href={link.resetPassword}
                             className="font-body text-gray-700 hover:text-black text-sm md:text-base">
                             Forgot password?
                         </a>
                         <a
-                            href="/"
+                            href={link.signup}
                             className="font-body text-gray-700 hover:text-black text-sm md:text-base">
                             Create new account
                         </a>

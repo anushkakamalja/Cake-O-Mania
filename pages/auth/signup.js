@@ -168,7 +168,7 @@ const SignUp = () => {
                             Already have an account?
                         </p>
                         <a
-                            href="/"
+                            href={link.login}
                             className="font-body text-gray-900 hover:text-black text-sm md:text-base">
                             Login here!
                         </a>
