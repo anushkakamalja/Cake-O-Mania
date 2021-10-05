@@ -24,6 +24,13 @@ export const sendResetPasswordEmail = (email) => {
     return Api.post('auth/password/reset/email', { email });
 };
 
+export const resetPassword = (token, password) => {
+    return Api.post('auth/password/reset/change', {
+        token,
+        password
+    });
+};
+
 export const getNewToken = async () => {
     try {
         const res = await Api.get('auth/refresh_token');
