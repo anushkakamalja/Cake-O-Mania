@@ -15,7 +15,7 @@ const ConfirmEmail = () => {
         retry: false,
         onSuccess: async (data) => {
             alert(data.message);
-            await router.push(link.home);
+            await router.push(link.login);
         },
         onError: async (error) => {
             alert(error?.response.data.message);
