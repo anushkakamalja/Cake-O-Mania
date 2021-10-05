@@ -15,3 +15,7 @@ export const login = (email, password) => {
 export const signUp = (email, password, firstName, lastName, mobileNo) => {
     return Api.post('auth/signup', { email, password, firstName, lastName, mobileNo });
 };
+
+export const verifyEmail = async (token) => {
+    return Api.post('auth/email/verify', { token });
+};
