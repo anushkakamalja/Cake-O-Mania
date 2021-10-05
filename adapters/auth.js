@@ -16,8 +16,12 @@ export const signUp = (email, password, firstName, lastName, mobileNo) => {
     return Api.post('auth/signup', { email, password, firstName, lastName, mobileNo });
 };
 
-export const verifyEmail = async (token) => {
+export const verifyEmail = (token) => {
     return Api.post('auth/email/verify', { token });
+};
+
+export const sendResetPasswordEmail = (email) => {
+    return Api.post('auth/password/reset/email', { email });
 };
 
 export const getNewToken = async () => {
