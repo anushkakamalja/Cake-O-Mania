@@ -1,21 +1,24 @@
 import React from 'react';
 import Api from '../adapters/Api';
-import { checkAuthWithServer } from '../adapters/auth';
+import { checkAuthWithServer, getNewToken } from '../adapters/auth';
 import { useQuery } from 'react-query';
 import PageLoader from '../components/PageLoader';
 import createPersistedState from 'use-persisted-state';
+import useInterval from '../hooks/useInterval';
 
 const useTokenState = createPersistedState('token');
 const AuthContext = React.createContext(undefined);
 
 const AuthProvider = ({ children }) => {
-    const [token] = useTokenState('');
+    const [token, setToken] = useTokenState('');
     Api.defaults.headers.Authorization = `Bearer ${token}`;
     const { isLoading, isError, data } = useQuery(['checkAuth', token], checkAuthWithServer, {
         retry: false,
-        staleTime: 5 * 60 * 1000
+        staleTime: 10 * 60 * 1000
     });
-
+    useInterval(async () => {
+        setToken(await getNewToken());
+    }, 10 * 60 * 1000);
     if (isLoading) return <PageLoader />;
     if (isError) {
         return (

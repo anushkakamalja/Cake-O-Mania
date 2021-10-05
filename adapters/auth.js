@@ -19,3 +19,12 @@ export const signUp = (email, password, firstName, lastName, mobileNo) => {
 export const verifyEmail = async (token) => {
     return Api.post('auth/email/verify', { token });
 };
+
+export const getNewToken = async () => {
+    try {
+        const res = await Api.get('auth/refresh_token');
+        return res.data.token;
+    } catch (error) {
+        return '';
+    }
+};
