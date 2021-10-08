@@ -6,46 +6,70 @@ import { BsSearch } from 'react-icons/bs';
 import CakeItemList from '../components/CakeItemList';
 import Cart from '../components/Cart';
 import { AiFillCaretDown } from 'react-icons/ai';
-import cakeList from '../assets/data/cakedata';
 import React, { useEffect, useState } from 'react';
+import { getAllCakes } from '../adapters/cakeApi';
 
 const Shop = () => {
-    const [filteredCakes, setFilteredCakes] = useState(cakeList);
-    const [isFiltered, setIsFiltered] = useState('id');
+    const [filteredCakes, setFilteredCakes] = useState([]);
+    const [isFiltered, setIsFiltered] = useState('rating');
+    const [cartCakes, setCartCakes] = useState([])
+    const [isCartCakes, setIsCartCakes] = useState(0)
+
+    useEffect(() => {
+
+        const fetchData = async () => {
+            try {
+                const response = await getAllCakes();
+                console.log(response.data);
+                setFilteredCakes(response.data)
+            } catch (error) {
+                console.log("error", error);
+            }
+        };
+
+        fetchData();
+    }, []);
+
 
     useEffect(() => {
         filterHandler();
-        setCakes();
     }, [isFiltered, filteredCakes]);
 
     const filterHandler = () => {
         switch (isFiltered) {
-            case 'new_price':
-                setFilteredCakes(filteredCakes.sort(GetSortOrder(isFiltered)));
+            case 'low_to_high':
+                setFilteredCakes(filteredCakes => filteredCakes.sort(GetSortOrder('price_per_half_kg')));
                 console.log(filteredCakes);
+                console.log(isFiltered);
                 break;
-            case 'old_price':
-                setFilteredCakes(filteredCakes.sort(GetReverseSortOrder('new_price')));
+            case 'high_to_low':
+                setFilteredCakes(filteredCakes => filteredCakes.sort(GetReverseSortOrder('price_per_half_kg')));
                 console.log(filteredCakes);
+                console.log(isFiltered);
                 break;
             case 'ratings':
-                setFilteredCakes(filteredCakes.sort(GetReverseSortOrder(isFiltered)));
+                setFilteredCakes(filteredCakes => filteredCakes.sort(GetReverseSortOrder('rating')));
                 console.log(filteredCakes);
+                console.log(isFiltered);
                 break;
-            case 'id':
-                setFilteredCakes(filteredCakes.sort(GetSortOrder(isFiltered)));
+            case 'popularity':
+                setFilteredCakes(filteredCakes => filteredCakes.sort(GetReverseSortOrder('rating')));
                 console.log(filteredCakes);
+                console.log(isFiltered);
+                break;
+            case 'num_orders':
+                setFilteredCakes(filteredCakes => filteredCakes.sort(GetSortOrder('num_orders')));
+                console.log(filteredCakes);
+                console.log(isFiltered);
                 break;
             default:
-                setFilteredCakes(filteredCakes);
+                setFilteredCakes(filteredCakes => filteredCakes);
                 console.log(filteredCakes);
+                console.log(isFiltered);
                 break;
         }
     };
 
-    const setCakes = () => {
-        <CakeItemList allCakes={filteredCakes} />;
-    };
     //Comparer Function
     function GetSortOrder(prop) {
         return function (a, b) {
@@ -86,40 +110,37 @@ const Shop = () => {
                         </p>
                     </div>
                     <div>
-                        <p className="font-body">
-                            {' '}
-                            <div className=" group relative dropdown py-4 px-2 cursor-pointer z-20 font-header flex flex-row r">
-                                <a className="hover:text-rose-300 border-solid border-4 border-rose-100 pl-3 ml-2 pr-20 py-1 w-48 rounded-2xl">
-                                    {' '}
-                                    Sort by
-                                </a>
+                        <div className=" group relative dropdown py-4 px-2 cursor-pointer z-20 font-header flex flex-row r">
+                            <a className="hover:text-rose-300 border-solid border-4 border-rose-100 pl-3 ml-2 pr-20 py-1 w-48 rounded-2xl">
+                                {' '}
+                                Sort by
+                            </a>
 
-                                <div className=" border-rose-200 w-42 p-4 text-lg mt-4 bg-white content-right text-center font-body  border-4 rounded-lg group-hover:block dropdown-menu absolute hidden h-auto">
-                                    <div className="p-1.5 hover:text-rose-300 cursor-pointer">
-                                        <a onClick={() => setIsFiltered('id')}>Popularity</a>
-                                    </div>
-                                    <hr className="bg-blue-300 h-0.5 p-px w-1/3 m-auto" />
-                                    <div className="p-1.5 hover:text-rose-300 cursor-pointer">
-                                        <a onClick={() => setIsFiltered('ratings')}>Ratings</a>
-                                    </div>
-                                    <hr className="bg-blue-300 h-0.5 p-px w-1/3 m-auto" />
-                                    <div className="p-1.5 hover:text-rose-300 cursor-pointer">
-                                        <a onClick={() => setIsFiltered('new_price')}>
-                                            Price:low to high
-                                        </a>
-                                    </div>
-                                    <hr className="bg-blue-300 h-0.5 p-px w-1/3 m-auto" />
-                                    <div className="p-1.5 hover:text-rose-300 cursor-pointer">
-                                        <a onClick={() => setIsFiltered('old_price')}>
-                                            Price:high to low
-                                        </a>
-                                    </div>
+                            <div className=" border-rose-200 w-42 p-4 text-lg mt-4 bg-white content-right text-center font-body  border-4 rounded-lg group-hover:block dropdown-menu absolute hidden h-auto">
+                                <div className="p-1.5 hover:text-rose-300 cursor-pointer">
+                                    <a onClick={() => setIsFiltered('popularity')}>Popularity</a>
                                 </div>
-                                <div className="absolute top-7 right-5 text-rose-400">
-                                    <AiFillCaretDown />
+                                <hr className="bg-blue-300 h-0.5 p-px w-1/3 m-auto" />
+                                <div className="p-1.5 hover:text-rose-300 cursor-pointer">
+                                    <a onClick={() => setIsFiltered('ratings')}>Ratings</a>
+                                </div>
+                                <hr className="bg-blue-300 h-0.5 p-px w-1/3 m-auto" />
+                                <div className="p-1.5 hover:text-rose-300 cursor-pointer">
+                                    <a onClick={() => setIsFiltered('low_to_high')}>
+                                        Price:low to high
+                                    </a>
+                                </div>
+                                <hr className="bg-blue-300 h-0.5 p-px w-1/3 m-auto" />
+                                <div className="p-1.5 hover:text-rose-300 cursor-pointer">
+                                    <a onClick={() => setIsFiltered('high_to_low')}>
+                                        Price:high to low
+                                    </a>
                                 </div>
                             </div>
-                        </p>
+                            <div className="absolute top-7 right-5 text-rose-400">
+                                <AiFillCaretDown />
+                            </div>
+                        </div>
                     </div>
 
                     <div>
@@ -140,7 +161,7 @@ const Shop = () => {
                 <CakeItemList allCakes={filteredCakes} />;
                 <div className="pl-20 flex justify-center">
                     <div className="flex flex-col">
-                        <Cart />
+                
                         <div className="w-64 h-32 justify-center rounded-2xl border-4 mb-10 border-gray-200 relative">
                             <p className="font-header text-3xl absolute top-1/3 left-10">
                                 Price Filter
@@ -148,9 +169,7 @@ const Shop = () => {
                             <button></button>
                         </div>
                         <div className="w-64 h-32 justify-center rounded-2xl border-4 border-gray-200 relative">
-                            <p className="font-header text-3xl absolute top-1/3 left-1/3">
-                                Tags
-                            </p>
+                            <p className="font-header text-3xl absolute top-1/3 left-1/3">Tags</p>
                         </div>
                     </div>
                 </div>

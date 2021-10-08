@@ -3,16 +3,22 @@ import { useState, useEffect } from 'react';
 import cakeImage from '../assets/images/Happy hour.png';
 import cakeDivider from '../assets/images/cakedivider.png';
 import Image from 'next/image';
+import { data } from 'autoprefixer';
 
 const Clock = () => {
     const date = new Date();
     const [currentSeconds, setSeconds] = useState(60 - date.getSeconds());
-    const [currentHours, setHour] = useState(20 - (date.getHours() % 12));
+    const [currentHours, setHour] = useState(19 - date.getHours());
     const [currentMinutes, setMinutes] = useState(60 - date.getMinutes());
     if (currentMinutes < 0) {
         setMinutes(60 - date.getMinutes());
     }
     const timerSeconds = () => setSeconds(currentSeconds - 1);
+
+    if (date.getHours() > 12) {
+        setHour(19 - currentHours % 12)
+    }
+
 
     useEffect(() => {
         if (currentSeconds < 0) {

@@ -1,22 +1,29 @@
 import React from 'react';
-import Image from 'next/image';
-import cakeImageGrid from '../assets/images/cake1.jpg';
 import { FaStar } from 'react-icons/fa';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 
 const CakeItem = ({ src }) => {
-    const { id, image, ratings, old_price, new_price, cake_name } = src;
+
+    const addtoCart = (src) => {
+        console.log(src);
+    }
+
+    const { name, image_url, price_per_half_kg, rating, num_orders, type } = src;
     let ratingNumber = [];
-    for (let i = 0; i < ratings; i++) {
+    for (let i = 0; i < rating; i++) {
         ratingNumber.push(i);
     }
     return (
         <div className="w-64 justify-center pb-10 rounded-2xl shadow-lg">
+
             <div className="pb-2">
-                <Image src={cakeImageGrid} alt="Image" className="rounded-2xl" />
+                <img
+                    src={image_url}
+                    alt="img"
+                    className="rounded-2xl"></img>
             </div>
             <div className="pb-2">
-                <p className="font-header text-2xl flex justify-center">{cake_name}</p>
+                <p className="font-header text-2xl flex justify-center">{name}</p>
             </div>
             <div className="flex flex-row justify-center pb-2">
                 {ratingNumber.map((i) => {
@@ -24,11 +31,10 @@ const CakeItem = ({ src }) => {
                 })}
             </div>
             <div className="flex flex-row justify-center pb-2">
-                <p className="line-through text-gray-400 pr-2">₹{old_price}</p>
-                <p>₹{new_price}</p>
+                <p>₹{price_per_half_kg}</p>
             </div>
             <div className="flex flex-row justify-center  mt-2 ">
-                <button className="font-header text-sm flex justify-center items-center px-2 hover:text-rose-400 border-2 rounded-xl border-gray-150">
+                <button className="font-header text-sm flex justify-center items-center px-2 hover:text-rose-400 border-2 rounded-xl border-gray-150" onClick={() => addtoCart(price_per_half_kg)}>
                     <p className="px-2">Add to cart </p>
                     <AiOutlineShoppingCart />
                 </button>
@@ -37,8 +43,5 @@ const CakeItem = ({ src }) => {
     );
 };
 
-const checkRatings = () => {
-    return <FaStar className="text-yellow-400 " />;
-};
 
 export default CakeItem;

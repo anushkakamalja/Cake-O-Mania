@@ -1,7 +1,7 @@
 const cake = [
     {
         id: 1,
-        image: '',
+        image: 'https://res.cloudinary.com/cake-o-mania-by-anushka/image/upload/v1633327592/site/exotic%20black%20forest%20cake1.png',
         ratings: 3,
         old_price: 84,
         new_price: 70,
@@ -9,7 +9,7 @@ const cake = [
     },
     {
         id: 2,
-        image: '',
+        image: 'https://res.cloudinary.com/cake-o-mania-by-anushka/image/upload/v1633327592/site/exotic%20black%20forest%20cake1.png',
         ratings: 4,
         old_price: 90,
         new_price: 85,
@@ -17,7 +17,7 @@ const cake = [
     },
     {
         id: 3,
-        image: '',
+        image: 'https://res.cloudinary.com/cake-o-mania-by-anushka/image/upload/v1633327592/site/exotic%20black%20forest%20cake1.png',
         ratings: 2,
         old_price: 84,
         new_price: 70070,
@@ -25,7 +25,7 @@ const cake = [
     },
     {
         id: 4,
-        image: '',
+        image: 'https://res.cloudinary.com/cake-o-mania-by-anushka/image/upload/v1633324848/site/Choco%20Chips%20Delight%20Cake%201.png',
         ratings: 5,
         old_price: 84,
         new_price: 700,
@@ -33,7 +33,7 @@ const cake = [
     },
     {
         id: 5,
-        image: '',
+        image: 'https://res.cloudinary.com/cake-o-mania-by-anushka/image/upload/v1633325597/site/Dairy%20Milk%20Mousse%20Cake.png',
         ratings: 1,
         old_price: 84,
         new_price: 570,
@@ -41,7 +41,7 @@ const cake = [
     },
     {
         id: 6,
-        image: '',
+        image: 'https://res.cloudinary.com/cake-o-mania-by-anushka/image/upload/v1633327799/site/Crunchy%20KitKat%20Cake.png',
         ratings: 0,
         old_price: 84,
         new_price: 970,
@@ -49,7 +49,7 @@ const cake = [
     },
     {
         id: 7,
-        image: '',
+        image: 'https://res.cloudinary.com/cake-o-mania-by-anushka/image/upload/v1633327799/site/Crunchy%20KitKat%20Cake.png',
         ratings: 5,
         old_price: 84,
         new_price: 760,
@@ -57,7 +57,7 @@ const cake = [
     },
     {
         id: 8,
-        image: '',
+        image: 'https://res.cloudinary.com/cake-o-mania-by-anushka/image/upload/v1633327799/site/Crunchy%20KitKat%20Cake.png',
         ratings: 3,
         old_price: 84,
         new_price: 702,
@@ -65,4 +65,46 @@ const cake = [
     }
 ];
 
-export default cake;
+const cakeList = [ {
+    name :"Exotic Black Forest Cake",
+    image_url : "https://res.cloudinary.com/cake-o-mania-by-anushka/image/upload/v1633327592/site/exotic%20black%20forest%20cake1.png",
+    price_per_half_kg : 100,
+    rating: 4,
+    num_orders : 1,
+    type : "CAKE"
+},
+{
+    name :"Exotic Black Forest Cake",
+    image_url : "https://res.cloudinary.com/cake-o-mania-by-anushka/image/upload/v1633327592/site/exotic%20black%20forest%20cake1.png",
+    price_per_half_kg : 200,
+    rating: 3,
+    num_orders : 2,
+    type : "CAKE"
+},
+{
+    name :"Exotic Black Forest Cake",
+    image_url : "https://res.cloudinary.com/cake-o-mania-by-anushka/image/upload/v1633327592/site/exotic%20black%20forest%20cake1.png",
+    price_per_half_kg : 300,
+    rating: 2,
+    num_orders : 3,
+    type : "CAKE"
+},
+{
+    name :"Exotic Black Forest Cake",
+    image_url : "https://res.cloudinary.com/cake-o-mania-by-anushka/image/upload/v1633327592/site/exotic%20black%20forest%20cake1.png",
+    price_per_half_kg : 400,
+    rating: 1,
+    num_orders : 4,
+    type : "CAKE"
+},
+{
+    name :"Exotic Black Forest Cake",
+    image_url : "https://res.cloudinary.com/cake-o-mania-by-anushka/image/upload/v1633327592/site/exotic%20black%20forest%20cake1.png",
+    price_per_half_kg : 500,
+    rating: 0,
+    num_orders : 5,
+    type : "CAKE"
+}]
+
+
+export default cakeList;
