@@ -1,11 +1,49 @@
 import Image from 'next/image';
 import bg from '../public/images/bg3.png';
 import cake_img from '../public/images/cake.jpg';
-import cake_img2 from '../public/images/cake2.jpg';
-import cake_img3 from '../public/images/cake3.jpg';
+// import cake_img2 from '../public/images/cake2.jpg';
+// import cake_img3 from '../public/images/cake3.jpg';
 import { ImCross } from 'react-icons/im';
+import { useState, useEffect } from 'react';
+import { getCart, getCake } from '../adapters/cakeApi';
 
 const Cart = () => {
+    const [cart, setCart] = useState([]);
+    const [id, setId] = useState(0);
+    const [cake, setCake] = useState([]);
+
+    useEffect(() => {
+        const fetchData = async () => {
+            try {
+                const response = await getCart();
+                setCart(response.data);
+                setId(response.data.data[0].items[0]._id);
+            } catch (error) {
+                console.log('error', error);
+            }
+        };
+
+        fetchData();
+    }, []);
+
+    useEffect(() => {
+        console.log(id);
+        const fetchData = async () => {
+            try {
+                const response = await getCake(id);
+                setCake(response.data[0]);
+            } catch (error) {
+                console.log('error', error);
+            }
+        };
+
+        fetchData();
+    }, [id]);
+
+    useEffect(() => {
+        console.log(cake[0]);
+    }, [cake]);
+
     return (
         <div className="pt-32 z-0 ">
             <div>
@@ -163,13 +201,12 @@ const Cart = () => {
             </div>
             <div className="items-center text-brown-100 w-4/5">
                 <table className="table-auto border-2 border-gray-200 w-full mx-40  mb-20	">
-                    <thead className="bg-gray-100	 text-lg font-body ">
+                    <thead className="bg-gray-100 text-lg font-body ">
                         <tr className="">
                             <th className="p-4"></th>
                             <th className="p-4">Product</th>
                             <th className="p-4">Price/half kg</th>
                             <th className="p-4">Quantity</th>
-                            <th className="p-4">Customization Charges</th>
                             <th className="p-4">Total</th>
                             <th className="p-4"></th>
                         </tr>
@@ -177,65 +214,19 @@ const Cart = () => {
                     <tbody>
                         <tr>
                             <td className="p-4 text-center text-base ">
-                                <Image
-                                    className="rounded-lg  w-full"
-                                    src={cake_img}
-                                    alt="bg"
-                                    width={93}
-                                    height={102}
-                                />
+                                <div className="w-32 h-32">
+                                    <img src={cake.image_url} alt="img"></img>
+                                </div>
                             </td>
-                            <td className="p-4 text-center ">Flowers cake</td>
-                            <td className="p-4 text-center ">₹500</td>
+                            <td className="p-4 text-center ">{cake.name}</td>
+                            <td className="p-4 text-center ">₹{cake.price_per_half_kg}</td>
                             <td className="p-4 text-center ">half kg</td>
-                            <td className="p-4 text-center ">₹50</td>
-                            <td className="p-4 text-center ">₹550</td>
+
+                            <td className="p-4 text-center ">₹{cake.price_per_half_kg}</td>
                             <td className="p-4 text-center text-red bg-red  ">
-                                <a className="cursor-pointer">
+                                <div className="cursor-pointer">
                                     <ImCross color="red" />
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td className="p-4 text-center text-base ">
-                                <Image
-                                    className="rounded-lg  w-full"
-                                    src={cake_img2}
-                                    alt="bg"
-                                    width={93}
-                                    height={102}
-                                />
-                            </td>
-                            <td className="p-4 text-center ">Rose cake</td>
-                            <td className="p-4 text-center ">₹500</td>
-                            <td className="p-4 text-center ">half kg</td>
-                            <td className="p-4 text-center ">₹50</td>
-                            <td className="p-4 text-center ">₹550</td>
-                            <td className="p-4 text-center text-red bg-red  ">
-                                <a className="cursor-pointer">
-                                    <ImCross color="red" />
-                                </a>
-                            </td>
-                        </tr>
-                        <tr>
-                            <td className="p-4 text-center text-base ">
-                                <Image
-                                    className="rounded-lg  w-full"
-                                    src={cake_img3}
-                                    alt="bg"
-                                    width={93}
-                                    height={102}
-                                />
-                            </td>
-                            <td className="p-4 text-center ">Chocolate Overloaded cake</td>
-                            <td className="p-4 text-center ">₹500</td>
-                            <td className="p-4 text-center ">half kg</td>
-                            <td className="p-4 text-center ">₹50</td>
-                            <td className="p-4 text-center ">₹550</td>
-                            <td className="p-4 text-center text-red bg-red  ">
-                                <a className="cursor-pointer">
-                                    <ImCross color="red" />
-                                </a>
+                                </div>
                             </td>
                         </tr>
                     </tbody>
@@ -261,7 +252,7 @@ const Cart = () => {
                         <p className="text-myCyan-100">₹ 1600</p>
                     </div>
                     <hr />
-                    < a href="/checkout">
+                    <a href="/checkout">
                         <button className="bg-lightPink-100 m-2 mt-6 float-right rounded-full px-5 py-2 text-white bg-rose-400 text-base hover:bg-myCyan-100 transition-colors duration-200 ease-in-out">
                             Proceed to checkout
                         </button>
