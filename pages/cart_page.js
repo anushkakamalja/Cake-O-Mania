@@ -1,7 +1,8 @@
 import Footer from '../sections/homepage/Footer';
 import Header from '../sections/homepage/Header';
 import Cart from '../sections/cart';
-export default function CartPage() {
+import WithAuth from '../HOCs/WithAuth';
+function CartPage() {
     return (
         <div>
             <Header className="z-20" />
@@ -10,3 +11,5 @@ export default function CartPage() {
         </div>
     );
 }
+
+export default WithAuth(CartPage);

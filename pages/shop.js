@@ -8,22 +8,22 @@ import Cart from '../components/Cart';
 import { AiFillCaretDown } from 'react-icons/ai';
 import React, { useEffect, useState } from 'react';
 import { getAllCakes } from '../adapters/cakeApi';
+import WithAuth from '../HOCs/WithAuth';
 
 const Shop = () => {
     const [filteredCakes, setFilteredCakes] = useState([]);
     const [isFiltered, setIsFiltered] = useState('rating');
-    const [cartCakes, setCartCakes] = useState([])
-    const [isCartCakes, setIsCartCakes] = useState(0)
+    const [cartCakes, setCartCakes] = useState([]);
+    const [isCartCakes, setIsCartCakes] = useState(0);
 
     useEffect(() => {
-
         const fetchData = async () => {
             try {
                 const response = await getAllCakes();
                 console.log(response.data);
-                setFilteredCakes(response.data)
+                setFilteredCakes(response.data);
             } catch (error) {
-                console.log("error", error);
+                console.log('error', error);
             }
         };
 
@@ -31,9 +31,8 @@ const Shop = () => {
     }, []);
 
     useEffect(() => {
-        setCartCakes(cartCakes)
-    }, [isCartCakes])
-
+        setCartCakes(cartCakes);
+    }, [isCartCakes]);
 
     useEffect(() => {
         filterHandler();
@@ -42,32 +41,40 @@ const Shop = () => {
     const filterHandler = () => {
         switch (isFiltered) {
             case 'low_to_high':
-                setFilteredCakes(filteredCakes => filteredCakes.sort(GetSortOrder('price_per_half_kg')));
+                setFilteredCakes((filteredCakes) =>
+                    filteredCakes.sort(GetSortOrder('price_per_half_kg'))
+                );
                 console.log(filteredCakes);
                 console.log(isFiltered);
                 break;
             case 'high_to_low':
-                setFilteredCakes(filteredCakes => filteredCakes.sort(GetReverseSortOrder('price_per_half_kg')));
+                setFilteredCakes((filteredCakes) =>
+                    filteredCakes.sort(GetReverseSortOrder('price_per_half_kg'))
+                );
                 console.log(filteredCakes);
                 console.log(isFiltered);
                 break;
             case 'ratings':
-                setFilteredCakes(filteredCakes => filteredCakes.sort(GetReverseSortOrder('rating')));
+                setFilteredCakes((filteredCakes) =>
+                    filteredCakes.sort(GetReverseSortOrder('rating'))
+                );
                 console.log(filteredCakes);
                 console.log(isFiltered);
                 break;
             case 'popularity':
-                setFilteredCakes(filteredCakes => filteredCakes.sort(GetReverseSortOrder('rating')));
+                setFilteredCakes((filteredCakes) =>
+                    filteredCakes.sort(GetReverseSortOrder('rating'))
+                );
                 console.log(filteredCakes);
                 console.log(isFiltered);
                 break;
             case 'num_orders':
-                setFilteredCakes(filteredCakes => filteredCakes.sort(GetSortOrder('num_orders')));
+                setFilteredCakes((filteredCakes) => filteredCakes.sort(GetSortOrder('num_orders')));
                 console.log(filteredCakes);
                 console.log(isFiltered);
                 break;
             default:
-                setFilteredCakes(filteredCakes => filteredCakes);
+                setFilteredCakes((filteredCakes) => filteredCakes);
                 console.log(filteredCakes);
                 console.log(isFiltered);
                 break;
@@ -162,7 +169,14 @@ const Shop = () => {
                 </div>
             </div>
             <div className="flex md:flex-row flex-col justify-center ">
-                <CakeItemList allCakes={filteredCakes} isCartCakes={isCartCakes} setIsCartCakes={setIsCartCakes} setCartCakes={setCartCakes} cartCakes={cartCakes} />;
+                <CakeItemList
+                    allCakes={filteredCakes}
+                    isCartCakes={isCartCakes}
+                    setIsCartCakes={setIsCartCakes}
+                    setCartCakes={setCartCakes}
+                    cartCakes={cartCakes}
+                />
+                ;
                 <div className="pl-20 flex justify-center">
                     <div className="flex flex-col">
                         <Cart cartCake={cartCakes} />
@@ -174,4 +188,4 @@ const Shop = () => {
     );
 };
 
-export default Shop;
+export default WithAuth(Shop);
