@@ -1,12 +1,13 @@
 import React from 'react';
 import Image from 'next/image';
-import cakeArray from '../assets/data/bestsellersList';
 import cakedivider from '../assets/images/cakedivider.png';
-import { BsAwardFill } from 'react-icons/bs';
+import { useState, useEffect } from 'react';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { FaStar } from 'react-icons/fa';
 
-const BestSellers = () => {
+const BestSellers = ({bestSellers}) => {
+
+
     return (
         <div className="flex items-center flex-col border-2 pt-4 pb-4 border-dotted text-mybrown-100 relative bg-speciality-bg">
             <p className="font-header md:text-9xl text-5xl  pb-8"> Best Sellers</p>
@@ -15,60 +16,50 @@ const BestSellers = () => {
             </div>
 
             <div className="grid md:grid-cols-3 sm:grid-cols-2 gap-12 pl-2 pr-2 pb-8 ">
-                {cakeArray.map((cakes) => (
-                    <SellerItems
-                        description={cakes.description}
-                        name={cakes.cakeName}
-                        img={cakes.img}
-                        rank={cakes.rank}
-                        key={cakes.rank}
-                    />
+                {bestSellers.map((cakes) => (
+                    <SellerItems src={cakes} key={cakes.name} />
                 ))}
             </div>
         </div>
     );
 };
 
-const SellerItems = ({ description, name, img, rank }) => {
+const SellerItems = ({ src }) => {
+    const { name, image_url, price_per_half_kg, rating, num_orders, type } = src;
+    let ratingNumber = [];
+    for (let i = 0; i < rating; i++) {
+        ratingNumber.push(i);
+    }
     return (
-        <div className=" relative flex flex-row h-auto shadow-2xl rounded-2xl ">
-            <div className="w-full justify-center pb-10 rounded-2xl shadow-lg">
-                <div className="pb-2">
-                    <Image src={img} alt="Image" className="rounded-2xl" />
-                </div>
-                <div className="pb-2">
-                    {/* <text className="font-header text-2xl flex justify-center">{name}</text> */}
-                </div>
-                <div className="flex flex-row justify-center pb-2">
-                    <FaStar className="text-yellow-400 " />
-                    <FaStar className="text-yellow-400 " />
-                    <FaStar className="text-yellow-400 " />
-                    <FaStar className="text-yellow-400 " />
-                    <FaStar className="text-yellow-400 " />
-                </div>
-                <div className="flex flex-row justify-center pb-2">
-                    {/* <text className=" text-black pr-2">{description}</text> */}
-                </div>
+        <div className="w-full justify-center pb-10 rounded-2xl shadow-lg border-4 border-pink-100">
+            <div className="pb-2">
+                <img
+                    src={image_url}
+                    alt="img"
+                    className="rounded-2xl"></img>
+            </div>
+            <div className="pb-2">
+                <p className="font-header text-2xl flex justify-center">{name}</p>
+            </div>
+            <div className="flex flex-row justify-center pb-2">
+                {ratingNumber.map((i) => {
+                    return <FaStar className="text-yellow-400 " key={i} />;
+                })}
+            </div>
+            <div className="flex flex-row justify-center pb-2 text-xl">
+                <p>₹{price_per_half_kg}</p>
+            </div>
+            <a href="/shop">
                 <div className="flex flex-row justify-center  mt-2 ">
-                    <button className="font-header text-sm flex justify-center items-center px-2 hover:text-rose-400 border-2 rounded-xl border-gray-150">
-                        {/* <text className="px-2">Click to buy</text> */}
+                    <button className="font-header text-sm flex justify-center items-center px-2 hover:text-rose-400 border-2 rounded-xl border-gray-150" onClick={() => addtoCart(price_per_half_kg)}>
+                        <p className="px-2">Go to shop </p>
                         <AiOutlineShoppingCart />
                     </button>
                 </div>
-            </div>
-            <div className="absolute top-0 right-0 bg-black bg-opacity-40 rounded-full p-2">
-                {checkRank({ rank })}
-            </div>
+            </a>
+
         </div>
     );
-};
-
-const checkRank = ({ rank }) => {
-    if (rank == 1) {
-        return <BsAwardFill className="text-yellow-400 " size={50} />;
-    } else if (rank === 2) {
-        return <BsAwardFill className="text-gray-300" size={50} />;
-    } else return <BsAwardFill className="text-mybrown-200" size={50} />;
 };
 
 export default BestSellers;

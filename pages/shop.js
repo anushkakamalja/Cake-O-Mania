@@ -6,19 +6,96 @@ import { BsSearch } from 'react-icons/bs';
 import CakeItemList from '../components/CakeItemList';
 import Cart from '../components/Cart';
 import { AiFillCaretDown } from 'react-icons/ai';
-import cakeList from '../assets/data/cakedata';
 import React, { useEffect, useState } from 'react';
+import { getAllCakes } from '../adapters/cakeApi';
 
 const Shop = () => {
-    const [addedtoCart, setAddedtoCart] = useState('notadded');
-    const [allCakes, setAllCakes] = useState([]);
-    const [cartCakes, setCartCakes] = useState([]);
+    const [filteredCakes, setFilteredCakes] = useState([]);
+    const [isFiltered, setIsFiltered] = useState('rating');
+    const [cartCakes, setCartCakes] = useState([])
+    const [isCartCakes, setIsCartCakes] = useState(0)
 
     useEffect(() => {
-        setAllCakes(cakeList);
+
+        const fetchData = async () => {
+            try {
+                const response = await getAllCakes();
+                console.log(response.data);
+                setFilteredCakes(response.data)
+            } catch (error) {
+                console.log("error", error);
+            }
+        };
+
+        fetchData();
     }, []);
 
-    console.log(allCakes);
+    useEffect(() => {
+        setCartCakes(cartCakes)
+    }, [isCartCakes])
+
+
+    useEffect(() => {
+        filterHandler();
+    }, [isFiltered, filteredCakes]);
+
+    const filterHandler = () => {
+        switch (isFiltered) {
+            case 'low_to_high':
+                setFilteredCakes(filteredCakes => filteredCakes.sort(GetSortOrder('price_per_half_kg')));
+                console.log(filteredCakes);
+                console.log(isFiltered);
+                break;
+            case 'high_to_low':
+                setFilteredCakes(filteredCakes => filteredCakes.sort(GetReverseSortOrder('price_per_half_kg')));
+                console.log(filteredCakes);
+                console.log(isFiltered);
+                break;
+            case 'ratings':
+                setFilteredCakes(filteredCakes => filteredCakes.sort(GetReverseSortOrder('rating')));
+                console.log(filteredCakes);
+                console.log(isFiltered);
+                break;
+            case 'popularity':
+                setFilteredCakes(filteredCakes => filteredCakes.sort(GetReverseSortOrder('rating')));
+                console.log(filteredCakes);
+                console.log(isFiltered);
+                break;
+            case 'num_orders':
+                setFilteredCakes(filteredCakes => filteredCakes.sort(GetSortOrder('num_orders')));
+                console.log(filteredCakes);
+                console.log(isFiltered);
+                break;
+            default:
+                setFilteredCakes(filteredCakes => filteredCakes);
+                console.log(filteredCakes);
+                console.log(isFiltered);
+                break;
+        }
+    };
+
+    //Comparer Function
+    function GetSortOrder(prop) {
+        return function (a, b) {
+            if (a[prop] > b[prop]) {
+                return 1;
+            } else if (a[prop] < b[prop]) {
+                return -1;
+            }
+            return 0;
+        };
+    }
+
+    function GetReverseSortOrder(prop) {
+        return function (a, b) {
+            if (a[prop] < b[prop]) {
+                return 1;
+            } else if (a[prop] > b[prop]) {
+                return -1;
+            }
+            return 0;
+        };
+    }
 
     return (
         <div>
@@ -31,44 +108,43 @@ const Shop = () => {
             <div>
                 <div className="flex justify-between pb-10 pl-10 pr-10">
                     <div className="hidden md:flex ">
-                        <text className="font-header pl-5">
+                        <p className="font-header pl-5">
                             {' '}
-                            Showing all {cakeList.length} items
-                        </text>
+                            Showing all {filteredCakes.length} items
+                        </p>
                     </div>
                     <div>
-                        <text className="font-body">
-                            {' '}
-                            <div className=" group relative dropdown py-4 px-2 cursor-pointer z-20 font-header flex flex-row r">
-                                <a
-                                    href="/"
-                                    className="hover:text-rose-300 border-solid border-4 border-rose-100 pl-3 ml-2 pr-20 py-1 w-48 rounded-2xl">
-                                    {' '}
-                                    Sort by
-                                </a>
+                        <div className=" group relative dropdown py-4 px-2 cursor-pointer z-20 font-header flex flex-row r">
+                            <a className="hover:text-rose-300 border-solid border-4 border-rose-100 pl-3 ml-2 pr-20 py-1 w-48 rounded-2xl">
+                                {' '}
+                                Sort by
+                            </a>
 
-                                <div className=" border-rose-200 w-42 p-4 text-lg mt-4 bg-white content-right text-center font-body  border-4 rounded-lg group-hover:block dropdown-menu absolute hidden h-auto">
-                                    <div className="p-1.5 hover:text-rose-300 cursor-pointer">
-                                        <a href="/">Popularity</a>
-                                    </div>
-                                    <hr className="bg-blue-300 h-0.5 p-px w-1/3 m-auto" />
-                                    <div className="p-1.5 hover:text-rose-300 cursor-pointer">
-                                        <a href="/">Ratings</a>
-                                    </div>
-                                    <hr className="bg-blue-300 h-0.5 p-px w-1/3 m-auto" />
-                                    <div className="p-1.5 hover:text-rose-300 cursor-pointer">
-                                        <a href="/">Price:low to high</a>
-                                    </div>
-                                    <hr className="bg-blue-300 h-0.5 p-px w-1/3 m-auto" />
-                                    <div className="p-1.5 hover:text-rose-300 cursor-pointer">
-                                        <a href="/">Price:high to low</a>
-                                    </div>
+                            <div className=" border-rose-200 w-42 p-4 text-lg mt-4 bg-white content-right text-center font-body  border-4 rounded-lg group-hover:block dropdown-menu absolute hidden h-auto">
+                                <div className="p-1.5 hover:text-rose-300 cursor-pointer">
+                                    <a onClick={() => setIsFiltered('popularity')}>Popularity</a>
                                 </div>
-                                <div className="absolute top-7 right-5 text-rose-400">
-                                    <AiFillCaretDown />
+                                <hr className="bg-blue-300 h-0.5 p-px w-1/3 m-auto" />
+                                <div className="p-1.5 hover:text-rose-300 cursor-pointer">
+                                    <a onClick={() => setIsFiltered('ratings')}>Ratings</a>
+                                </div>
+                                <hr className="bg-blue-300 h-0.5 p-px w-1/3 m-auto" />
+                                <div className="p-1.5 hover:text-rose-300 cursor-pointer">
+                                    <a onClick={() => setIsFiltered('low_to_high')}>
+                                        Price:low to high
+                                    </a>
+                                </div>
+                                <hr className="bg-blue-300 h-0.5 p-px w-1/3 m-auto" />
+                                <div className="p-1.5 hover:text-rose-300 cursor-pointer">
+                                    <a onClick={() => setIsFiltered('high_to_low')}>
+                                        Price:high to low
+                                    </a>
                                 </div>
                             </div>
-                        </text>
+                            <div className="absolute top-7 right-5 text-rose-400">
+                                <AiFillCaretDown />
+                            </div>
+                        </div>
                     </div>
 
                     <div>
@@ -86,26 +162,10 @@ const Shop = () => {
                 </div>
             </div>
             <div className="flex md:flex-row flex-col justify-center ">
-                <CakeItemList allCakes={allCakes} setAddedtoCart={setAddedtoCart} />
+                <CakeItemList allCakes={filteredCakes} isCartCakes={isCartCakes} setIsCartCakes={setIsCartCakes} setCartCakes={setCartCakes} cartCakes={cartCakes} />;
                 <div className="pl-20 flex justify-center">
                     <div className="flex flex-col">
-                        <Cart
-                            cartCakes={cartCakes}
-                            addedtoCart={addedtoCart}
-                            setAddedtoCart={setAddedtoCart}
-                            setCartCakes={setCartCakes}
-                        />
-                        <div className="w-64 h-32 justify-center rounded-2xl border-4 mb-10 border-gray-200 relative">
-                            <text className="font-header text-3xl absolute top-1/3 left-10">
-                                Price Filter
-                            </text>
-                            <button></button>
-                        </div>
-                        <div className="w-64 h-32 justify-center rounded-2xl border-4 border-gray-200 relative">
-                            <text className="font-header text-3xl absolute top-1/3 left-1/3">
-                                Tags
-                            </text>
-                        </div>
+                        <Cart cartCake={cartCakes} />
                     </div>
                 </div>
             </div>
