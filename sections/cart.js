@@ -261,9 +261,11 @@ const Cart = () => {
                         <p className="text-myCyan-100">₹ 1600</p>
                     </div>
                     <hr />
-                    <button className="bg-lightPink-100 m-2 mt-6 float-right rounded-full px-5 py-2 text-white text-base hover:bg-myCyan-100 transition-colors duration-200 ease-in-out">
-                        Proceed to checkout
-                    </button>
+                    < a href="/checkout">
+                        <button className="bg-lightPink-100 m-2 mt-6 float-right rounded-full px-5 py-2 text-white bg-rose-400 text-base hover:bg-myCyan-100 transition-colors duration-200 ease-in-out">
+                            Proceed to checkout
+                        </button>
+                    </a>
                 </div>
             </div>{' '}
         </div>

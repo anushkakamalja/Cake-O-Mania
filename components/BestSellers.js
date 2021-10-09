@@ -1,11 +1,13 @@
 import React from 'react';
 import Image from 'next/image';
 import cakedivider from '../assets/images/cakedivider.png';
-import { BsAwardFill } from 'react-icons/bs';
+import { useState, useEffect } from 'react';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { FaStar } from 'react-icons/fa';
 
-const BestSellers = ({ src }) => {
+const BestSellers = ({bestSellers}) => {
+
+
     return (
         <div className="flex items-center flex-col border-2 pt-4 pb-4 border-dotted text-mybrown-100 relative bg-speciality-bg">
             <p className="font-header md:text-9xl text-5xl  pb-8"> Best Sellers</p>
@@ -14,7 +16,7 @@ const BestSellers = ({ src }) => {
             </div>
 
             <div className="grid md:grid-cols-3 sm:grid-cols-2 gap-12 pl-2 pr-2 pb-8 ">
-                {src.map((cakes) => (
+                {bestSellers.map((cakes) => (
                     <SellerItems src={cakes} key={cakes.name} />
                 ))}
             </div>

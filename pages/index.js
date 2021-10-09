@@ -11,20 +11,18 @@ import { useEffect, useState } from 'react';
 import { getBestSellers } from '../adapters/cakeApi';
 
 export default function Home() {
-
+    
     const [bestSellers, setBestSellers] = useState([])
     
     useEffect(() => {
         const fetchData = async () => {
             try {
                 const response = await getBestSellers();
-                console.log(response.data);
                 setBestSellers(response.data)
             } catch (error) {
                 console.log("error", error);
             }
         };
-
         fetchData();
     }, []);
     return (
@@ -32,7 +30,7 @@ export default function Home() {
             <Header />
             <Hero />
             <Specialities />
-            <BestSellers src={bestSellers}/>
+            <BestSellers bestSellers = {bestSellers}/>
             <HappyHours/>
             <Reviews />
             <Video />

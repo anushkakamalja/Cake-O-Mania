@@ -30,6 +30,10 @@ const Shop = () => {
         fetchData();
     }, []);
 
+    useEffect(() => {
+        setCartCakes(cartCakes)
+    }, [isCartCakes])
+
 
     useEffect(() => {
         filterHandler();
@@ -158,19 +162,10 @@ const Shop = () => {
                 </div>
             </div>
             <div className="flex md:flex-row flex-col justify-center ">
-                <CakeItemList allCakes={filteredCakes} />;
+                <CakeItemList allCakes={filteredCakes} isCartCakes={isCartCakes} setIsCartCakes={setIsCartCakes} setCartCakes={setCartCakes} cartCakes={cartCakes} />;
                 <div className="pl-20 flex justify-center">
                     <div className="flex flex-col">
-                
-                        <div className="w-64 h-32 justify-center rounded-2xl border-4 mb-10 border-gray-200 relative">
-                            <p className="font-header text-3xl absolute top-1/3 left-10">
-                                Price Filter
-                            </p>
-                            <button></button>
-                        </div>
-                        <div className="w-64 h-32 justify-center rounded-2xl border-4 border-gray-200 relative">
-                            <p className="font-header text-3xl absolute top-1/3 left-1/3">Tags</p>
-                        </div>
+                        <Cart cartCake={cartCakes} />
                     </div>
                 </div>
             </div>

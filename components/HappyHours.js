@@ -10,31 +10,21 @@ const Clock = () => {
     const [currentSeconds, setSeconds] = useState(60 - date.getSeconds());
     const [currentHours, setHour] = useState(19 - date.getHours());
     const [currentMinutes, setMinutes] = useState(60 - date.getMinutes());
-    if (currentMinutes < 0) {
+    const timerSeconds = () => setSeconds(currentSeconds => currentSeconds - 1);
+    if (currentSeconds < 0) {
+        setSeconds(59);
         setMinutes(60 - date.getMinutes());
     }
-    const timerSeconds = () => setSeconds(currentSeconds - 1);
-
-    if (date.getHours() > 12) {
-        setHour(19 - currentHours % 12)
+    if (currentMinutes < 0) {
+        setHour(19 - date.getHours())
     }
-
-
+    if (currentHours < -0) {
+        setHour(19 - date.getHours() % 12);
+    }
     useEffect(() => {
-        if (currentSeconds < 0) {
-            setSeconds(59);
-            setMinutes(60 - date.getMinutes());
-        }
         const id = setInterval(timerSeconds, 1000);
         return () => clearInterval(id);
     }, [currentSeconds]);
-
-    useEffect(() => {
-        if (currentMinutes < 0) {
-            setSeconds(59);
-            setHour((date.getHours() % 12) + 8);
-        }
-    }, [currentMinutes]);
 
     return (
         <div className="pt-2">

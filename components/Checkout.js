@@ -245,12 +245,12 @@ const Checkout = () => {
                             </tfoot>
                         </table>
                     </div>
-                    <input
-                        type="submit"
-                        value="Place Order"
+                    <a
+                        href='https://pmny.in/YILVjSc2a1HV'
                         className="hover:text-white rounded-3xl bg-mypink-100 text-white hover:bg-myCyan-100 transition duration-300 cursor-pointer py-2 px-5 mt-10"
-                    />
+                    >Place Order</a>
                 </form>
+
             </div>
         </div>
     );
