@@ -1,9 +1,12 @@
 import React from 'react';
-import { addtoCart } from '../adapters/cakeApi';
+import { addtoCart, getuser } from '../adapters/cakeApi';
+import { useAuth } from '../contexts/AuthContext';
 
 const Cart = ({ cartCake }) => {
+    const auth = useAuth();
     const handleSubmit = async () => {
-        const response = await addtoCart(cartCake, cartCake.price_per_half_kg);
+        const { id } = await getuser(auth.user.email);
+        const response = await addtoCart(cartCake, id, cartCake.price_per_half_kg);
         console.log(response);
     };
 

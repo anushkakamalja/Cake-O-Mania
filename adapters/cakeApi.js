@@ -8,8 +8,8 @@ export const getBestSellers = () => {
     return Api.get('/api/cakes/3');
 };
 
-export const addtoCart = (items, total_price) => {
-    return Api.post('cart/addtocart', { items, total_price });
+export const addtoCart = (items, user, total_price) => {
+    return Api.post('cart/addtocart', { items, user, total_price });
 };
 
 export const getCart = () => {
@@ -18,4 +18,8 @@ export const getCart = () => {
 
 export const getCake = (id) => {
     return Api.post('api/getcake', { id });
+};
+
+export const getuser = (user) => {
+    return Api.get(`/users/getuser/${user}`);
 };
