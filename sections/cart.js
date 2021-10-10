@@ -3,21 +3,44 @@ import bg from '../public/images/bg3.png';
 import cake_img from '../public/images/cake.jpg';
 // import cake_img2 from '../public/images/cake2.jpg';
 // import cake_img3 from '../public/images/cake3.jpg';
-import { ImCross } from 'react-icons/im';
 import { useState, useEffect } from 'react';
 import { getCart, getCake } from '../adapters/cakeApi';
+import { useAuth } from '../contexts/AuthContext';
+import CartItem from '../components/CartItem';
+import CakeItem from '../components/CakeItem';
 
 const Cart = () => {
+    const cake_ids = [];
+    const cake_holder = [];
+    const auth = useAuth();
     const [cart, setCart] = useState([]);
     const [id, setId] = useState(0);
     const [cake, setCake] = useState([]);
 
+    const fetchData = async (id) => {};
+
+    const append_ids = async (cart) => {
+        for (let i = 0; i < cart.data.length; i++) {
+            cake_ids.push(cart.data[i].items[0]._id);
+        }
+        for (let i = 0; i < cake_ids.length; i++) {
+            try {
+                const response = await getCake(cake_ids[i]);
+                cake_holder.push(response.data);
+                // setCake(response.data);
+            } catch (error) {
+                console.log('error', error);
+            }
+        }
+    };
+
     useEffect(() => {
         const fetchData = async () => {
             try {
-                const response = await getCart();
+                const response = await getCart(auth.user.email);
                 setCart(response.data);
-                setId(response.data.data[0].items[0]._id);
+                append_ids(response.data);
+                setId(response.data.data[1].items[0]._id);
             } catch (error) {
                 console.log('error', error);
             }
@@ -27,22 +50,10 @@ const Cart = () => {
     }, []);
 
     useEffect(() => {
-        console.log(id);
-        const fetchData = async () => {
-            try {
-                const response = await getCake(id);
-                setCake(response.data[0]);
-            } catch (error) {
-                console.log('error', error);
-            }
-        };
+        const fetchData = async () => {};
 
         fetchData();
     }, [id]);
-
-    useEffect(() => {
-        console.log(cake[0]);
-    }, [cake]);
 
     return (
         <div className="pt-32 z-0 ">
@@ -212,21 +223,22 @@ const Cart = () => {
                         </tr>
                     </thead>
                     <tbody>
+                        {cake_holder.map((cake) => {
+                            <CartItem cake={cake} key={cake._id} />;
+                        })}
                         <tr>
                             <td className="p-4 text-center text-base ">
                                 <div className="w-32 h-32">
-                                    <img src={cake.image_url} alt="img"></img>
+                                    <img src={cake_holder[0]} alt="img"></img>
                                 </div>
                             </td>
-                            <td className="p-4 text-center ">{cake.name}</td>
-                            <td className="p-4 text-center ">₹{cake.price_per_half_kg}</td>
+                            <td className="p-4 text-center ">{cake_holder[0]}</td>
+                            <td className="p-4 text-center ">₹{cake_holder[0]}</td>
                             <td className="p-4 text-center ">half kg</td>
 
-                            <td className="p-4 text-center ">₹{cake.price_per_half_kg}</td>
+                            <td className="p-4 text-center ">₹{cake_holder[0]}</td>
                             <td className="p-4 text-center text-red bg-red  ">
-                                <div className="cursor-pointer">
-                                    <ImCross color="red" />
-                                </div>
+                                <div className="cursor-pointer"></div>
                             </td>
                         </tr>
                     </tbody>
@@ -258,7 +270,7 @@ const Cart = () => {
                         </button>
                     </a>
                 </div>
-            </div>{' '}
+            </div>
         </div>
     );
 };

@@ -12,12 +12,12 @@ export const addtoCart = (items, user, total_price) => {
     return Api.post('cart/addtocart', { items, user, total_price });
 };
 
-export const getCart = () => {
-    return Api.get('cart/getcart');
+export const getCart = (user) => {
+    return Api.get(`cart/getcart/${user}`);
 };
 
 export const getCake = (id) => {
-    return Api.post('api/getcake', { id });
+    return Api.get(`api/cake/${id}`);
 };
 
 export const getuser = (user) => {
