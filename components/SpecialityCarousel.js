@@ -22,7 +22,7 @@ const SlideShow = ({ data }) => {
                 leave="transition-opacity duration-1000"
                 leaveFrom="opacity-100 "
                 leaveTo="opacity-0 scale-100">
-                <div className=" w-4/5 h-96 flex flex-row  justify-around  items-start">
+                <div className=" w-4/5 h-96 flex flex-row   justify-between  items-center">
                     <Speciality
                         text={spec1.text}
                         src={spec1.src}
@@ -85,7 +85,7 @@ const SpecialityCarousel = () => {
 
     return (
         <div
-            className="bg-spec bg-cover bg-opacity-10 bg-no-repeat h-screen min-w-full mt-10 mb-10 flex flex-col justify-between items-center"
+            className="bg-spec bg-cover bg-opacity-10 bg-no-repeat h-full min-w-full  flex flex-col justify-between items-center"
             {...swipeHandlers}>
             <div className=" bg-white bg-transparent bg-opacity-70 h-full min-w-full  flex flex-col justify-start items-center">
                 <div className="flex flex-col justify-around items-center mb-20 pt-20">

@@ -216,7 +216,7 @@ const Cart = () => {
                     </svg>
                 </div>
                 <div>
-                    <table className="table-auto border-2 border-gray-200 w-full mb-20	">
+                    <table className="table-auto border-2 border-gray-200 w-4/5 mx-36 self-center mb-20	">
                         <thead className="bg-gray-100 text-lg font-header ">
                             <tr className="">
                                 <th className="p-4"></th>

@@ -1,50 +1,55 @@
-import spec1 from '../images/spec1.png';
-import spec2 from '../images/spec2.png';
-import spec3 from '../images/spec3.png';
-import spec4 from '../images/spec4.png';
+import occ_cakes from '../images/occasion_cakes.png';
+import cupcake from '../images/cupcake.png';
+import macaron from '../images/macaron.png';
+import cookie1 from '../images/cookie1.png';
+import small_cake from '../images/small_cake.png';
+import donut from '../images/donut.png';
+import chocolate from '../images/chocolate.png';
+import muffin from '../images/muffin1.png';
 
 const specialities = [
     [
         {
-            src: spec1,
+            src: occ_cakes,
             type: 'Occassion Cakes',
-            text: 'Lorem Ipsum is simply dummy text of the printing'
+            text: 'Customised for your special occasions.'
         },
         {
-            src: spec1,
+            src: donut,
+            type: 'Donuts',
+            text: 'Little rings of joy.'
+        },
+        {
+            src: cupcake,
             type: 'Cupcakes',
-            text: 'Lorem Ipsum is simply dummy text of the printing '
+            text: 'A cup full of cake and heart.'
         },
         {
-            src: spec2,
-            type: 'Macarons',
-            text: 'Lorem Ipsum is simply dummy text of the printing '
-        },
-        {
-            src: spec2,
-            type: 'Small Cakes',
-            text: 'Lorem Ipsum is simply dummy text of the printing'
+            src: cookie1,
+            type: 'Cookies',
+            text: 'Made up of lots of butter and love!'
         }
     ],
     [
         {
-            src: spec3,
-            type: 'Occassion Cakes',
-            text: 'Lorem Ipsum is simply dummy text of the printing'
-        },
-        {
-            src: spec3,
-            type: 'Cupcakes',
-            text: 'Lorem Ipsum is simply dummy text of the printing '
-        },
-        {
-            src: spec4,
+            src: macaron,
             type: 'Macarons',
             text: 'Lorem Ipsum is simply dummy text of the printing '
         },
+
         {
-            src: spec4,
+            src: chocolate,
+            type: 'Chocolates',
+            text: 'Lorem Ipsum is simply dummy text of the printing '
+        },
+        {
+            src: small_cake,
             type: 'Small Cakes',
+            text: 'Lorem Ipsum is simply dummy text of the printing'
+        },
+        {
+            src: muffin,
+            type: 'Muffins',
             text: 'Lorem Ipsum is simply dummy text of the printing'
         }
     ]

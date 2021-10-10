@@ -168,6 +168,9 @@ const Shop = () => {
                     </div>
                 </div>
             </div>
+            <div className="mx-16 font-header mb-4 underline text-5xl">
+                <a href="#">Cakes</a>
+            </div>
             <div className="flex md:flex-row flex-col justify-center ">
                 <CakeItemList
                     allCakes={filteredCakes}

@@ -13,70 +13,80 @@ const Header = () => {
                                 <a> Home</a>
                             </div>
                         </a>
-                        <a href ="/shop">
-                        <div className="py-4 px-2 hover:text-myCyan-100 cursor-pointer">
-                            <a>Catalog</a>
-                        </div>
+                        <a href="/shop">
+                            <div className="py-4 px-2 hover:text-myCyan-100 cursor-pointer">
+                                <a>Catalog</a>
+                            </div>
                         </a>
-                        <div className=" group relative dropdown py-4 px-2 cursor-pointer z-20 ">
-                            <a className="hover:text-myCyan-100 "> Specialities</a>
+                        <a href="/shop">
+                            <div className=" group relative dropdown py-4 px-2 cursor-pointer z-20 ">
+                                <a className="hover:text-myCyan-100 "> Specialities</a>
 
-                            <div className=" border-myCyan-100 w-36 p-4 text-lg mt-4 bg-white content-right text-center font-body border-myCyan-100 border-4 rounded-lg group-hover:block dropdown-menu absolute hidden h-auto">
-                                <div className="p-1.5 hover:text-myCyan-100 cursor-pointer">
-                                    <a>Cakes</a>
-                                </div>
-                                <hr className="bg-myCyan-100 h-0.5 p-px w-1/3 m-auto" />
-                                <div className="p-1.5 hover:text-myCyan-100 cursor-pointer">
-                                    <a>Cupcakes</a>
-                                </div>
-                                <hr className="bg-myCyan-100 h-0.5 p-px w-1/3 m-auto " />
-                                <div className="p-1.5 hover:text-myCyan-100 cursor-pointer">
-                                    <a>Donuts</a>
-                                </div>
-                                <hr className="bg-myCyan-100 h-0.5 p-px w-1/3 m-auto " />
-                                <div className="p-1.5 hover:text-myCyan-100 cursor-pointer">
-                                    <a>Tea-Time Cakes</a>
-                                </div>
-                                <hr className="bg-myCyan-100 h-0.5 p-px w-1/3 m-auto " />
-                                <div className="p-1.5 hover:text-myCyan-100 cursor-pointer">
-                                    <a>Cookies</a>
-                                </div>
-                                <hr className="bg-myCyan-100 h-0.5 p-px w-1/3 m-auto " />
-                                <div className="p-1.5 hover:text-myCyan-100 cursor-pointer">
-                                    <a>Chocolates</a>
+                                <div className=" border-myCyan-100 w-36 p-4 text-lg mt-4 bg-white content-right text-center font-body border-myCyan-100 border-4 rounded-lg group-hover:block dropdown-menu absolute hidden h-auto">
+                                    <div className="p-1.5 hover:text-myCyan-100 cursor-pointer">
+                                        <a>Cakes</a>
+                                    </div>
+                                    <hr className="bg-myCyan-100 h-0.5 p-px w-1/3 m-auto" />
+                                    <div className="p-1.5 hover:text-myCyan-100 cursor-pointer">
+                                        <a>Cupcakes</a>
+                                    </div>
+                                    <hr className="bg-myCyan-100 h-0.5 p-px w-1/3 m-auto " />
+                                    <div className="p-1.5 hover:text-myCyan-100 cursor-pointer">
+                                        <a>Donuts</a>
+                                    </div>
+                                    <hr className="bg-myCyan-100 h-0.5 p-px w-1/3 m-auto " />
+                                    <div className="p-1.5 hover:text-myCyan-100 cursor-pointer">
+                                        <a>Tea-Time Cakes</a>
+                                    </div>
+                                    <hr className="bg-myCyan-100 h-0.5 p-px w-1/3 m-auto " />
+                                    <div className="p-1.5 hover:text-myCyan-100 cursor-pointer">
+                                        <a>Cookies</a>
+                                    </div>
+                                    <hr className="bg-myCyan-100 h-0.5 p-px w-1/3 m-auto " />
+                                    <div className="p-1.5 hover:text-myCyan-100 cursor-pointer">
+                                        <a>Chocolates</a>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
+                        </a>
                     </div>
                     <div className="z-20  absolute ">
-                        <Image src={logo} alt="logo" width={200} height={200} />
+                        <a href="/">
+                            <Image src={logo} alt="logo" width={200} height={200} />
+                        </a>
                     </div>
                     <div className="  flex flex-row justify-around w-1/3 relative  content-around text-right  pt-12">
+                        <a href="#contacts">
+                            <div className="py-4 px-2 hover:text-myCyan-100 cursor-pointer">
+                                <a>Contacts</a>
+                            </div>
+                        </a>
+                        <a href="#reviews">
+                            <div className="py-4 px-2 hover:text-myCyan-100 cursor-pointer">
+                                <a>Reviews</a>
+                            </div>
+                        </a>
                         <div className="py-4 px-2 hover:text-myCyan-100 cursor-pointer">
-                            <a>Offers</a>
-                        </div>
-                        <div className="py-4 px-2 hover:text-myCyan-100 cursor-pointer">
-                            <a>Contacts</a>
-                        </div>
-                        <div className="py-4 px-2 hover:text-myCyan-100 cursor-pointer">
-                            <a>Reviews</a>
+                            <a href="/auth/login">Login</a>
                         </div>
                     </div>
                 </div>
                 <div className=" flex flex-row justify-around  pt-14 px-2 content-between w-32 ">
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        className="h-8 w-8 cursor-pointer"
-                        fill="none"
-                        viewBox="0 0 24 24"
-                        stroke="currentColor">
-                        <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth="2"
-                            d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
-                        />
-                    </svg>
+                    <a href="/cart_page">
+                        <svg
+                            xmlns="http://www.w3.org/2000/svg"
+                            className="h-8 w-8 cursor-pointer"
+                            fill="none"
+                            viewBox="0 0 24 24"
+                            stroke="currentColor">
+                            <path
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                strokeWidth="2"
+                                d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"
+                            />
+                        </svg>
+                    </a>
                     <svg
                         xmlns="http://www.w3.org/2000/svg"
                         className="h-8 w-8 cursor-pointer"

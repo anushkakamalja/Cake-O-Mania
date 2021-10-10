@@ -33,7 +33,7 @@ const SignUp = () => {
 
     return (
         <div className="flex h-screen overflow-hidden">
-            <img src="/images/login_bg.jpeg" alt="Cake" className="hidden md:block max-h-screen" />
+            <img src="/images/login_bg3.jpeg" alt="Cake" className="hidden md:block max-h-screen" />
             <div className="flex flex-col items-center w-full p-10 overflow-auto">
                 <h2 className="text-xl md:text-3xl text-center mt-4 font-body font-bold">
                     Welcome to Cake-o-Mania!

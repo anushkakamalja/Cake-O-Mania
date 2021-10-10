@@ -9,7 +9,7 @@ import { HiOutlineChevronRight, HiOutlineChevronLeft } from 'react-icons/hi';
 const SlideShow = ({ src, isOpen }) => {
     const { name, image, text } = src;
     return (
-        <>
+        <div>
             <Transition
                 show={isOpen}
                 enter="transition-opacity duration-1000"
@@ -39,7 +39,7 @@ const SlideShow = ({ src, isOpen }) => {
                     <p className="font-body text-white p-4 ">{text}</p>
                 </div>
             </Transition>
-        </>
+        </div>
     );
 };
 
@@ -74,7 +74,7 @@ const ReviewCarousal = () => {
     });
     return (
         <div
-            className="bg-rose-400 max-w-full my-20 shadow-lg cursor-move p-4 rounded-xl relative"
+            className="bg-rose-400 max-w-full  shadow-lg cursor-move p-4 relative"
             {...swipeHandlers}>
             <div className="flex justify-center p-4 text-white">
                 <text className="font-header capitalize text-5xl ">Clients Say</text>
