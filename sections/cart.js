@@ -1,23 +1,21 @@
 import Image from 'next/image';
 import bg from '../public/images/bg3.png';
-import cake_img from '../public/images/cake.jpg';
-// import cake_img2 from '../public/images/cake2.jpg';
-// import cake_img3 from '../public/images/cake3.jpg';
 import { useState, useEffect } from 'react';
 import { getCart, getCake } from '../adapters/cakeApi';
 import { useAuth } from '../contexts/AuthContext';
 import CartItem from '../components/CartItem';
-import CakeItem from '../components/CakeItem';
+
 
 const Cart = () => {
     const cake_ids = [];
     const cake_holder = [];
     const auth = useAuth();
     const [cart, setCart] = useState([]);
+    let price = 0
+    const [priceLoading, setPriceLoading] = useState(true)
     const [id, setId] = useState(0);
     const [cakes, setCakes] = useState([]);
     const [loading, setLoading] = useState(true);
-
     const append_ids = async (cart) => {
         for (let i = 0; i < cart.data.length; i++) {
             cake_ids.push(cart.data[i].items[0]._id);
@@ -30,6 +28,12 @@ const Cart = () => {
                 console.log('error', error);
             }
         }
+        for (let i = 0; i < cake_holder.length; i++) {
+            price = price + cake_holder[i][0].price_per_half_kg
+            console.log(price);
+        }
+
+        setPriceLoading(false);
         setCakes(cake_holder);
         // console.log('cake holder :', cake_holder);
         setLoading(false);
@@ -53,7 +57,7 @@ const Cart = () => {
         fetchData();
     }, []);
 
-    if (loading) {
+    if (loading || priceLoading) {
         return <h1>Loading.....</h1>;
     } else {
         return (
@@ -211,9 +215,9 @@ const Cart = () => {
                             strokeWidth="0"></path>
                     </svg>
                 </div>
-                <div className="items-center text-brown-100 w-4/5">
-                    <table className="table-auto border-2 border-gray-200 w-full mx-40  mb-20	">
-                        <thead className="bg-gray-100 text-lg font-body ">
+                <div>
+                    <table className="table-auto border-2 border-gray-200 w-full mb-20	">
+                        <thead className="bg-gray-100 text-lg font-header ">
                             <tr className="">
                                 <th className="p-4"></th>
                                 <th className="p-4">Product</th>
@@ -224,37 +228,13 @@ const Cart = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {cakes.map((cake) => {
-                                // <CartItem
-                                //     image_url={cake[0].image_url}
-                                //     name={cake[0].name}
-                                //     price_per_half_kg={cake[0].price_per_half_kg}
-                                //     key={cake._id}
-                                // />;
-                                <tr>
-                                    <td className="p-4 text-center text-base ">
-                                        <div className="w-32 h-32">
-                                            <img src={cake[0].image_url} alt="img"></img>
-                                        </div>
-                                    </td>
-                                    <td className="p-4 text-center ">{cake[0].name}</td>
-                                    <td className="p-4 text-center ">
-                                        ₹{cake[0].price_per_half_kg}
-                                    </td>
-                                    <td className="p-4 text-center ">half kg</td>
-
-                                    <td className="p-4 text-center ">
-                                        ₹{cake[0].price_per_half_kg}
-                                    </td>
-                                    <td className="p-4 text-center text-red bg-red  ">
-                                        <div className="cursor-pointer"></div>
-                                    </td>
-                                </tr>;
-                                console.log(cake[0].name);
-                            })}
+                            {cakes.map((cake) => (
+                                <CartItem cake={cake[0]} key={cake[0].name} cakes={cakes} setCakes={setCakes} />
+                            ))}
                         </tbody>
                     </table>
                 </div>
+
                 <div className="flex flex-row-reverse">
                     <div className=" w-1/3  mr-36  mb-4 ">
                         <h2 className="p-2 font-header text-lg text-brown-100 font-semibold	">
@@ -272,7 +252,7 @@ const Cart = () => {
                         <hr />
                         <div className="flex flex-row justify-between p-2 font-body text-base text-brown-100 font-semibold">
                             <p>Total</p>
-                            <p className="text-myCyan-100">₹ 1600</p>
+                            <p className="text-myCyan-100">₹{price}</p>
                         </div>
                         <hr />
                         <a href="/checkout">

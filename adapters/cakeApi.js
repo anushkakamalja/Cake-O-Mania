@@ -23,3 +23,7 @@ export const getCake = (id) => {
 export const getuser = (user) => {
     return Api.get(`/users/getuser/${user}`);
 };
+
+export const getCartTotal =(user)=>{
+    return Api.get(`/cart/gettotal/${user}`)
+}

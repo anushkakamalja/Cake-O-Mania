@@ -5,8 +5,9 @@ import { useAuth } from '../contexts/AuthContext';
 const Cart = ({ cartCake }) => {
     const auth = useAuth();
     const handleSubmit = async () => {
-        const { id } = await getuser(auth.user.email);
-        const response = await addtoCart(cartCake, id, cartCake.price_per_half_kg);
+        const id = await getuser(auth.user.email);
+        console.log(id.data.id);
+        const response = await addtoCart(cartCake, id.data.id, cartCake.price_per_half_kg);
         console.log(response);
     };
 
@@ -29,10 +30,18 @@ const Cart = ({ cartCake }) => {
 
                 <button
                     type="submit"
-                    className="font-header text-l border-2 w-auto border-red-300 hover:bg-red-300 hover:text-white cursor-pointer pl-20"
+                    className="font-header text-l border-2 w-full mb-3 border-red-300 hover:bg-red-300 hover:text-white cursor-pointer "
                     onClick={handleSubmit}>
                     Submit
                 </button>
+                <a href="/cart_page">
+                    <button
+                        type="submit"
+                        className="font-header text-l border-2 w-full border-red-300 hover:bg-red-300 hover:text-white cursor-pointer "
+                    >
+                        Go to Cart Page
+                    </button>
+                </a>
             </div>
         </div>
     );
