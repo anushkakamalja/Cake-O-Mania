@@ -37,8 +37,7 @@ const Cart = ({ cartCake }) => {
                 <a href="/cart_page">
                     <button
                         type="submit"
-                        className="font-header text-l border-2 w-full border-red-300 hover:bg-red-300 hover:text-white cursor-pointer "
-                    >
+                        className="font-header text-l border-2 w-full border-red-300 hover:bg-red-300 hover:text-white cursor-pointer ">
                         Go to Cart Page
                     </button>
                 </a>

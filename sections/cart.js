@@ -5,14 +5,13 @@ import { getCart, getCake } from '../adapters/cakeApi';
 import { useAuth } from '../contexts/AuthContext';
 import CartItem from '../components/CartItem';
 
-
 const Cart = () => {
     const cake_ids = [];
     const cake_holder = [];
     const auth = useAuth();
     const [cart, setCart] = useState([]);
-    let price = 0
-    const [priceLoading, setPriceLoading] = useState(true)
+    let price = 0;
+    const [priceLoading, setPriceLoading] = useState(true);
     const [id, setId] = useState(0);
     const [cakes, setCakes] = useState([]);
     const [loading, setLoading] = useState(true);
@@ -29,7 +28,7 @@ const Cart = () => {
             }
         }
         for (let i = 0; i < cake_holder.length; i++) {
-            price = price + cake_holder[i][0].price_per_half_kg
+            price = price + cake_holder[i][0].price_per_half_kg;
             console.log(price);
         }
 
@@ -229,7 +228,12 @@ const Cart = () => {
                         </thead>
                         <tbody>
                             {cakes.map((cake) => (
-                                <CartItem cake={cake[0]} key={cake[0].name} cakes={cakes} setCakes={setCakes} />
+                                <CartItem
+                                    cake={cake[0]}
+                                    key={cake[0].name}
+                                    cakes={cakes}
+                                    setCakes={setCakes}
+                                />
                             ))}
                         </tbody>
                     </table>

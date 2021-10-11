@@ -23,3 +23,7 @@ export const getCake = (id) => {
 export const getuser = (user) => {
     return Api.get(`/users/getuser/${user}`);
 };
+
+export const deletefromcart = (user, id) => {
+    return Api.post('cart/delete', { user, id });
+};
