@@ -5,9 +5,7 @@ import { useAuth } from '../contexts/AuthContext';
 const Cart = ({ cartCake }) => {
     const auth = useAuth();
     const handleSubmit = async () => {
-        const id = await getuser(auth.user.email);
-        console.log(id.data.id);
-        const response = await addtoCart(cartCake, id.data.id, cartCake.price_per_half_kg);
+        const response = await addtoCart(cartCake, cartCake.price_per_half_kg);
         console.log(response);
     };
 

@@ -8,12 +8,12 @@ export const getBestSellers = () => {
     return Api.get('/api/cakes/3');
 };
 
-export const addtoCart = (items, user, total_price) => {
-    return Api.post('cart/addtocart', { items, user, total_price });
+export const addtoCart = (items, total_price) => {
+    return Api.post('cart/addtocart', { items, total_price });
 };
 
-export const getCart = (user) => {
-    return Api.get(`cart/getcart/${user}`);
+export const getCart = () => {
+    return Api.get(`cart/getcart`);
 };
 
 export const getCake = (id) => {

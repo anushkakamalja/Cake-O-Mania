@@ -2,61 +2,16 @@ import Image from 'next/image';
 import bg from '../public/images/bg3.png';
 import { useState, useEffect } from 'react';
 import { getCart, getCake } from '../adapters/cakeApi';
-import { useAuth } from '../contexts/AuthContext';
 import CartItem from '../components/CartItem';
+import { useQuery } from 'react-query';
+
+const getCartWrapper = async () => (await getCart()).data.data;
+const offer = 50;
 
 const Cart = () => {
-    const cake_ids = [];
-    const cake_holder = [];
-    const auth = useAuth();
-    const [cart, setCart] = useState([]);
-    let price = 0;
-    const [priceLoading, setPriceLoading] = useState(true);
-    const [id, setId] = useState(0);
-    const [cakes, setCakes] = useState([]);
-    const [loading, setLoading] = useState(true);
-    const append_ids = async (cart) => {
-        for (let i = 0; i < cart.data.length; i++) {
-            cake_ids.push(cart.data[i].items[0]._id);
-        }
-        for (let i = 0; i < cake_ids.length; i++) {
-            try {
-                const response = await getCake(cake_ids[i]);
-                cake_holder.push(response.data);
-            } catch (error) {
-                console.log('error', error);
-            }
-        }
-        for (let i = 0; i < cake_holder.length; i++) {
-            price = price + cake_holder[i][0].price_per_half_kg;
-            console.log(price);
-        }
-
-        setPriceLoading(false);
-        setCakes(cake_holder);
-        // console.log('cake holder :', cake_holder);
-        setLoading(false);
-    };
-
-    useEffect(() => {
-        console.log('cakes :', cakes);
-    }, [cakes]);
-
-    useEffect(() => {
-        const fetchData = async () => {
-            try {
-                const response = await getCart(auth.user.email);
-                setCart(response.data);
-                append_ids(response.data);
-            } catch (error) {
-                console.log('error', error);
-            }
-        };
-
-        fetchData();
-    }, []);
-
-    if (loading || priceLoading) {
+    const cartQuery = useQuery('cart', getCartWrapper);
+    console.log(cartQuery);
+    if (cartQuery.isLoading) {
         return <h1>Loading.....</h1>;
     } else {
         return (
@@ -227,13 +182,8 @@ const Cart = () => {
                             </tr>
                         </thead>
                         <tbody>
-                            {cakes.map((cake) => (
-                                <CartItem
-                                    cake={cake[0]}
-                                    key={cake[0].name}
-                                    cakes={cakes}
-                                    setCakes={setCakes}
-                                />
+                            {cartQuery.data.cart.items.map((cake) => (
+                                <CartItem cake={cartQuery.data.cakes[cake._id]} key={cake._id} />
                             ))}
                         </tbody>
                     </table>
@@ -247,16 +197,18 @@ const Cart = () => {
                         <hr />
                         <div className="flex flex-row justify-between p-2 font-body text-base text-brown-100 font-semibold w-full ">
                             <p>Subtotal</p>
-                            <p className="">₹ 1650</p>
+                            <p className="">₹ {cartQuery.data.cart.total_price}</p>
                         </div>
                         <div className="flex flex-row justify-between p-2 font-body text-base text-brown-100 font-semibold">
                             <p>Offer</p>
-                            <p>- ₹ 50</p>
+                            <p>- ₹ {offer}</p>
                         </div>
                         <hr />
                         <div className="flex flex-row justify-between p-2 font-body text-base text-brown-100 font-semibold">
                             <p>Total</p>
-                            <p className="text-myCyan-100">₹{price}</p>
+                            <p className="text-myCyan-100">
+                                ₹{cartQuery.data.cart.total_price - offer}
+                            </p>
                         </div>
                         <hr />
                         <a href="/checkout">

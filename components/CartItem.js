@@ -1,7 +1,7 @@
 import React from 'react';
 import { ImCross } from 'react-icons/im';
 import { deletefromcart } from '../adapters/cakeApi';
-const CartItem = ({ cake, cakes, setCakes }) => {
+const CartItem = ({ cake }) => {
     const deletecartitem = async () => {
         const response = await deletefromcart(
             '616194b87dad773dd423d15c',
