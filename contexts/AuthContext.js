@@ -11,6 +11,9 @@ const AuthContext = React.createContext(undefined);
 
 const AuthProvider = ({ children }) => {
     const [token, setToken] = useTokenState('');
+    const logout = () => {
+        setToken('');
+    };
     Api.defaults.headers.Authorization = `Bearer ${token}`;
     const { isLoading, isError, data } = useQuery(['checkAuth', token], checkAuthWithServer, {
         retry: false,
@@ -34,7 +37,8 @@ const AuthProvider = ({ children }) => {
             firstName: authData.firstName,
             lastName: authData.lastName
         },
-        isAuthenticated: true
+        isAuthenticated: true,
+        logout
     };
     return <AuthContext.Provider value={value}>{children}</AuthContext.Provider>;
 };

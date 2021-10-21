@@ -1,8 +1,13 @@
+/* eslint-disable jsx-a11y/no-noninteractive-element-interactions */
+/* eslint-disable jsx-a11y/click-events-have-key-events */
 /* eslint-disable jsx-a11y/anchor-is-valid */
 import logo from '../../public/images/logo.png';
 import Image from 'next/image';
+import { useAuth } from '../../contexts/AuthContext';
 
 const Header = () => {
+    const { isAuthenticated, logout } = useAuth();
+
     return (
         <header className="fixed top-0  left-0 w-full z-20">
             <div className="flex flex-row bg-white z-20">
@@ -67,7 +72,11 @@ const Header = () => {
                             </div>
                         </a>
                         <div className="py-4 px-2 hover:text-myCyan-100 cursor-pointer">
-                            <a href="/auth/login">Login</a>
+                            {isAuthenticated ? (
+                                <p onClick={logout}>Logout</p>
+                            ) : (
+                                <a href="/auth/login">Login</a>
+                            )}
                         </div>
                     </div>
                 </div>

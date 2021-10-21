@@ -58,3 +58,9 @@ Models
   Order
   Stars
   Message
+
+1. Search function
+2. Delete from cart
+3. Proceed to checkout
+4. Sections on shop page
+5. Set quantity in cart
