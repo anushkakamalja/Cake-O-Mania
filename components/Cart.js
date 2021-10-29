@@ -3,7 +3,7 @@ import { addtoCart, getuser } from '../adapters/cakeApi';
 
 const Cart = ({ cartCake }) => {
     const handleSubmit = async () => {
-        const response = await addtoCart(cartCake, cartCake.price_per_half_kg);
+        const response = await addtoCart(cartCake);
         console.log(response);
     };
     console.log(cartCake);
