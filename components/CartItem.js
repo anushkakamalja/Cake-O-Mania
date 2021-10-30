@@ -3,11 +3,9 @@ import { ImCross } from 'react-icons/im';
 import { deletefromcart } from '../adapters/cakeApi';
 const CartItem = ({ cake }) => {
     const deletecartitem = async () => {
-        const response = await deletefromcart(
-            '616194b87dad773dd423d15c',
-            '615ac88bf0981f41b587dd06'
-        );
+        const response = await deletefromcart(cake._id);
         console.log(response);
+        window.location.reload();
     };
 
     return (
