@@ -27,3 +27,7 @@ export const getuser = (user) => {
 export const deletefromcart = (id) => {
     return Api.post('cart/delete', { id });
 };
+
+export const searchByPattern = (pattern) => {
+    return Api.post('search', { pattern });
+};

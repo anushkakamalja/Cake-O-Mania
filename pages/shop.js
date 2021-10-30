@@ -9,12 +9,26 @@ import { AiFillCaretDown } from 'react-icons/ai';
 import React, { useEffect, useState } from 'react';
 import { getAllCakes } from '../adapters/cakeApi';
 import WithAuth from '../HOCs/WithAuth';
+import { searchByPattern } from '../adapters/cakeApi';
 
 const Shop = () => {
     const [filteredCakes, setFilteredCakes] = useState([]);
     const [isFiltered, setIsFiltered] = useState('rating');
     const [cartCakes, setCartCakes] = useState([]);
     const [isCartCakes, setIsCartCakes] = useState(0);
+    const [searchedCakes, setSearchedCakes] = useState([]);
+    const [filterState, setFilterState] = useState('');
+
+    const handleSearch = async (e) => {
+        try {
+            e.preventDefault();
+            const response = await searchByPattern(filterState);
+            console.log(response.data);
+            setFilteredCakes(response.data);
+        } catch (error) {
+            console.log(error);
+        }
+    };
 
     useEffect(() => {
         const fetchData = async () => {
@@ -108,7 +122,7 @@ const Shop = () => {
                         </p>
                     </div>
                     <div>
-                        <div className=" group relative dropdown py-4 px-2 cursor-pointer z-20 font-header flex flex-row r">
+                        <div className=" group relative dropdown py-4 px-2 cursor-pointer font-header flex flex-row r">
                             <a className="hover:text-rose-300 border-solid border-4 border-rose-100 pl-3 ml-2 pr-20 py-1 w-48 rounded-2xl">
                                 {' '}
                                 Sort by
@@ -142,14 +156,20 @@ const Shop = () => {
                     </div>
 
                     <div>
-                        <form className="pl-5 border-4 border-rose-100 flex flex-row m-3 justify-between rounded-full py-3 ">
+                        <form
+                            className="pl-5 border-4 border-rose-100 flex flex-row m-3 justify-between rounded-full py-3 "
+                            onSubmit={handleSearch}>
                             <input
                                 type="text"
+                                value={filterState}
+                                onChange={(e) => {
+                                    setFilterState(e.target.value);
+                                }}
                                 placeholder="Search Cakes"
-                                className="font-medium text-black font-header"
+                                className="font-medium text-black outline-none font-header"
                             />
                             <button className="px-3 rounded-full text-pink-500 hover:scale-150">
-                                <BsSearch />
+                                <BsSearch onClick={handleSearch} />
                             </button>
                         </form>
                     </div>
