@@ -182,7 +182,7 @@ const Shop = () => {
                 ;
                 <div className="pl-20 flex justify-center">
                     <div className="flex flex-col">
-                        <Cart cartCake={cartCakes} />
+                        <Cart cartCake={cartCakes} setCartCakes={setCartCakes} />
                     </div>
                 </div>
             </div>

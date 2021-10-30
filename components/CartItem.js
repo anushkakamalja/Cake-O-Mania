@@ -1,13 +1,20 @@
 import React from 'react';
 import { ImCross } from 'react-icons/im';
+import { useQueryClient, useMutation } from 'react-query';
 import { deletefromcart } from '../adapters/cakeApi';
-const CartItem = ({ cake }) => {
-    const deletecartitem = async () => {
-        const response = await deletefromcart(cake._id);
-        console.log(response);
-        window.location.reload();
-    };
 
+const deletecartitem = async (id) => {
+    const response = await deletefromcart(id);
+    console.log(response);
+};
+
+const CartItem = ({ cake }) => {
+    const queryClient = useQueryClient();
+    const mutation = useMutation(deletecartitem, {
+        onSuccess: () => {
+            queryClient.invalidateQueries('cart');
+        }
+    });
     return (
         <tr className="border-b-2 border-opacity-50 border-black-100">
             <td className="p-4 text-center text-base ">
@@ -22,7 +29,7 @@ const CartItem = ({ cake }) => {
             <td className="p-4 text-center font-header">₹{cake.price_per_half_kg}</td>
             <td className="p-4 text-center text-red bg-red  ">
                 <div className="cursor-pointer">
-                    <ImCross color="red" onClick={deletecartitem} />
+                    <ImCross color="red" onClick={() => mutation.mutate(cake._id)} />
                 </div>
             </td>
         </tr>

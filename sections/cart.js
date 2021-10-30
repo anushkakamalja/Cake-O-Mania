@@ -1,7 +1,6 @@
 import Image from 'next/image';
 import bg from '../public/images/bg3.png';
-import { useState, useEffect } from 'react';
-import { getCart, getCake } from '../adapters/cakeApi';
+import { getCart } from '../adapters/cakeApi';
 import CartItem from '../components/CartItem';
 import { useQuery } from 'react-query';
 
@@ -207,7 +206,10 @@ const Cart = () => {
                         <div className="flex flex-row justify-between p-2 font-body text-base text-brown-100 font-semibold">
                             <p>Total</p>
                             <p className="text-myCyan-100">
-                                ₹{cartQuery.data.cart.total_price - offer}
+                                ₹
+                                {cartQuery.data.cart.total_price - offer < 0
+                                    ? 0
+                                    : cartQuery.data.cart.total_price - offer}
                             </p>
                         </div>
                         <hr />

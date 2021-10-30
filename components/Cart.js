@@ -1,10 +1,10 @@
 import React from 'react';
-import { addtoCart, getuser } from '../adapters/cakeApi';
+import { addtoCart } from '../adapters/cakeApi';
 
-const Cart = ({ cartCake }) => {
+const Cart = ({ cartCake, setCartCakes }) => {
     const handleSubmit = async () => {
-        const response = await addtoCart(cartCake);
-        console.log(response);
+        await addtoCart(cartCake);
+        setCartCakes([]);
     };
     console.log(cartCake);
     return (
