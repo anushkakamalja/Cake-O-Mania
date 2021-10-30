@@ -1,8 +1,9 @@
 import React from 'react';
-
+import { useAuth } from '../contexts/AuthContext';
 const Checkout = () => {
+    const { user } = useAuth();
     return (
-        <div className="mt-36 h-80 ">
+        <div className="mt-36 ">
             <div className="bg-checkout-bg bg-center bg-cover h-80"></div>
             <div className="relative -top-36 z-10 transform rotate-180">
                 <svg
@@ -161,7 +162,8 @@ const Checkout = () => {
                                             type="text"
                                             name="firstname"
                                             id="firstname"
-                                            className="border-2 border-mygrey-100 w-1/2 text-xl h-10 py-1 px-2"
+                                            defaultValue={`${user.firstName} ${user.lastname}`}
+                                            className="border-2 outline-none border-mygrey-100 w-1/2 text-xl h-10 py-1 px-2"
                                         />
                                     </div>
                                 </p>
@@ -172,7 +174,7 @@ const Checkout = () => {
                                             type="text"
                                             name="addr"
                                             id="addr"
-                                            className="border-2 border-mygrey-100 w-1/2 text-xl h-10 py-1 px-2"
+                                            className="border-2 border-mygrey-100 resize-none w-1/2 outline-none text-xl h-24 py-1 px-2"
                                         />
                                     </div>
                                 </p>
@@ -183,7 +185,8 @@ const Checkout = () => {
                                             type="text"
                                             name="phone"
                                             id="phone"
-                                            className="border-2 border-mygrey-100 w-1/2 text-xl h-10 py-1 px-2"
+                                            defaultValue={user.mobileNo}
+                                            className="border-2 border-mygrey-100 w-1/2 outline-none text-xl h-10 py-1 px-2"
                                         />
                                     </div>
                                 </p>
@@ -194,22 +197,23 @@ const Checkout = () => {
                                             type="text"
                                             name="email"
                                             id="email"
-                                            className="border-2 border-mygrey-100 w-1/2 text-xl h-10 py-1 px-2"
+                                            defaultValue={user.email}
+                                            className="border-2 border-mygrey-100 outline-none w-1/2 text-xl h-10 py-1 px-2"
                                         />
                                     </div>
                                 </p>
                             </div>
                         </div>
-                        <div className="w-1/2">
-                            <h1 className="text-center font-header text-mybrown-100 text-5xl my-10">
-                                Customizations
+                        <div className="w-1/2 text-center">
+                            <h1 className="text-center font-header  text-mybrown-100 text-5xl my-10">
+                                Custom Message
                             </h1>
                             <textarea
                                 rows="8"
                                 cols="50"
                                 name="customization"
                                 id="customization"
-                                className="border-2 border-mygrey-100 text-xl ml-44 resize-none px-2 py-2 overflow-hidden"></textarea>
+                                className="border-2 border-mygrey-100 text-xl outline-none resize-none px-2 py-2 overflow-hidden"></textarea>
                         </div>
                     </div>
                     <div className="w-full">
@@ -246,11 +250,11 @@ const Checkout = () => {
                         </table>
                     </div>
                     <a
-                        href='https://pmny.in/YILVjSc2a1HV'
-                        className="hover:text-white rounded-3xl bg-mypink-100 text-white hover:bg-myCyan-100 transition duration-300 cursor-pointer py-2 px-5 mt-10"
-                    >Place Order</a>
+                        href="https://pmny.in/YILVjSc2a1HV"
+                        className="hover:text-white rounded-3xl bg-mypink-100 text-white hover:bg-myCyan-100 transition duration-300 cursor-pointer py-2 px-5 mt-10">
+                        Place Order
+                    </a>
                 </form>
-
             </div>
         </div>
     );
