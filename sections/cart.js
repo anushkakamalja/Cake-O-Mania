@@ -9,7 +9,6 @@ const offer = 50;
 
 const Cart = () => {
     const cartQuery = useQuery('cart', getCartWrapper);
-    console.log(cartQuery);
     if (cartQuery.isLoading) {
         return <h1>Loading.....</h1>;
     } else {

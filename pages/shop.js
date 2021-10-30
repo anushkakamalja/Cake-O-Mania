@@ -20,7 +20,6 @@ const Shop = () => {
         const fetchData = async () => {
             try {
                 const response = await getAllCakes();
-                console.log(response.data);
                 setFilteredCakes(response.data);
             } catch (error) {
                 console.log('error', error);
@@ -44,39 +43,27 @@ const Shop = () => {
                 setFilteredCakes((filteredCakes) =>
                     filteredCakes.sort(GetSortOrder('price_per_half_kg'))
                 );
-                console.log(filteredCakes);
-                console.log(isFiltered);
                 break;
             case 'high_to_low':
                 setFilteredCakes((filteredCakes) =>
                     filteredCakes.sort(GetReverseSortOrder('price_per_half_kg'))
                 );
-                console.log(filteredCakes);
-                console.log(isFiltered);
                 break;
             case 'ratings':
                 setFilteredCakes((filteredCakes) =>
                     filteredCakes.sort(GetReverseSortOrder('rating'))
                 );
-                console.log(filteredCakes);
-                console.log(isFiltered);
                 break;
             case 'popularity':
                 setFilteredCakes((filteredCakes) =>
                     filteredCakes.sort(GetReverseSortOrder('rating'))
                 );
-                console.log(filteredCakes);
-                console.log(isFiltered);
                 break;
             case 'num_orders':
                 setFilteredCakes((filteredCakes) => filteredCakes.sort(GetSortOrder('num_orders')));
-                console.log(filteredCakes);
-                console.log(isFiltered);
                 break;
             default:
                 setFilteredCakes((filteredCakes) => filteredCakes);
-                console.log(filteredCakes);
-                console.log(isFiltered);
                 break;
         }
     };

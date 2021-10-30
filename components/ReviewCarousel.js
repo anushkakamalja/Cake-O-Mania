@@ -25,7 +25,7 @@ const SlideShow = ({ src, isOpen }) => {
                         className="w-40 h-40 rounded-full shadow border-4"></img>
                 </div>
                 <div className="flex justify-center p-4">
-                    <text className="font-header capitalize text-white text-3xl">{name}</text>
+                    <p className="font-header capitalize text-white text-3xl">{name}</p>
                 </div>
                 <div className="flex justify-center p-4 ">
                     <FaStar size={25} className="text-yellow-400 " />
@@ -77,7 +77,7 @@ const ReviewCarousal = () => {
             className="bg-rose-400 max-w-full  shadow-lg cursor-move p-4 relative"
             {...swipeHandlers}>
             <div className="flex justify-center p-4 text-white">
-                <text className="font-header capitalize text-5xl ">Clients Say</text>
+                <p className="font-header capitalize text-5xl ">Clients Say</p>
             </div>
             {peopleList.map((person, number) => (
                 <SlideShow src={person} key={person.id} isOpen={index === number} />

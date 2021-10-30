@@ -15,41 +15,41 @@ const Header = () => {
                     <div className="  flex flex-row justify-around  w-1/3 content-around text-right pt-12 ">
                         <a href="/">
                             <div className="py-4 px-2 hover:text-myCyan-100 cursor-pointer ">
-                                <a> Home</a>
+                                <p> Home</p>
                             </div>
                         </a>
                         <a href="/shop">
                             <div className="py-4 px-2 hover:text-myCyan-100 cursor-pointer">
-                                <a>Catalog</a>
+                                <p>Catalog</p>
                             </div>
                         </a>
                         <a href="/shop">
                             <div className=" group relative dropdown py-4 px-2 cursor-pointer z-20 ">
-                                <a className="hover:text-myCyan-100 "> Specialities</a>
+                                <p className="hover:text-myCyan-100 "> Specialities</p>
 
                                 <div className=" border-myCyan-100 w-36 p-4 text-lg mt-4 bg-white content-right text-center font-body border-myCyan-100 border-4 rounded-lg group-hover:block dropdown-menu absolute hidden h-auto">
                                     <div className="p-1.5 hover:text-myCyan-100 cursor-pointer">
-                                        <a>Cakes</a>
+                                        <p>Cakes</p>
                                     </div>
                                     <hr className="bg-myCyan-100 h-0.5 p-px w-1/3 m-auto" />
                                     <div className="p-1.5 hover:text-myCyan-100 cursor-pointer">
-                                        <a>Cupcakes</a>
+                                        <p>Cupcakes</p>
                                     </div>
                                     <hr className="bg-myCyan-100 h-0.5 p-px w-1/3 m-auto " />
                                     <div className="p-1.5 hover:text-myCyan-100 cursor-pointer">
-                                        <a>Donuts</a>
+                                        <p>Donuts</p>
                                     </div>
                                     <hr className="bg-myCyan-100 h-0.5 p-px w-1/3 m-auto " />
                                     <div className="p-1.5 hover:text-myCyan-100 cursor-pointer">
-                                        <a>Tea-Time Cakes</a>
+                                        <p>Tea-Time Cakes</p>
                                     </div>
                                     <hr className="bg-myCyan-100 h-0.5 p-px w-1/3 m-auto " />
                                     <div className="p-1.5 hover:text-myCyan-100 cursor-pointer">
-                                        <a>Cookies</a>
+                                        <p>Cookies</p>
                                     </div>
                                     <hr className="bg-myCyan-100 h-0.5 p-px w-1/3 m-auto " />
                                     <div className="p-1.5 hover:text-myCyan-100 cursor-pointer">
-                                        <a>Chocolates</a>
+                                        <p>Chocolates</p>
                                     </div>
                                 </div>
                             </div>
@@ -63,12 +63,12 @@ const Header = () => {
                     <div className="  flex flex-row justify-around w-1/3 relative  content-around text-right  pt-12">
                         <a href="#contacts">
                             <div className="py-4 px-2 hover:text-myCyan-100 cursor-pointer">
-                                <a>Contacts</a>
+                                <p>Contacts</p>
                             </div>
                         </a>
                         <a href="#reviews">
                             <div className="py-4 px-2 hover:text-myCyan-100 cursor-pointer">
-                                <a>Reviews</a>
+                                <p>Reviews</p>
                             </div>
                         </a>
                         <div className="py-4 px-2 hover:text-myCyan-100 cursor-pointer">

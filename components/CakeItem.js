@@ -7,10 +7,8 @@ const CakeItem = ({ src, isCartCakes, setIsCartCakes, setCartCakes, cartCakes })
     const { name, image_url, price_per_half_kg, rating, num_orders, type } = src;
 
     const addtoCart = (price) => {
-        console.log(price);
         setIsCartCakes((isCartCakes) => isCartCakes + 1);
         setCartCakes((cakes) => [...cakes, cake]);
-        console.log(cartCakes);
     };
 
     let ratingNumber = [];

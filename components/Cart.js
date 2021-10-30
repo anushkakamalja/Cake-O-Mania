@@ -6,7 +6,6 @@ const Cart = ({ cartCake, setCartCakes }) => {
         await addtoCart(cartCake);
         setCartCakes([]);
     };
-    console.log(cartCake);
     return (
         <div className="w-64 h-auto justify-center rounded-2xl border-4 mb-10 border-gray-200 p-3">
             <p className="font-header text-3xl pl-20">Cart</p>

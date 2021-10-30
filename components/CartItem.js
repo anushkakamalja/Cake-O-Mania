@@ -4,8 +4,7 @@ import { useQueryClient, useMutation } from 'react-query';
 import { deletefromcart } from '../adapters/cakeApi';
 
 const deletecartitem = async (id) => {
-    const response = await deletefromcart(id);
-    console.log(response);
+    await deletefromcart(id);
 };
 
 const CartItem = ({ cake }) => {
