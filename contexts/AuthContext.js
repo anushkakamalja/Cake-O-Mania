@@ -35,7 +35,8 @@ const AuthProvider = ({ children }) => {
         user: {
             email: authData.email,
             firstName: authData.firstName,
-            lastName: authData.lastName
+            lastName: authData.lastName,
+            mobileNo: authData.mobileNo
         },
         isAuthenticated: true,
         logout
