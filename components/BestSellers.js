@@ -1,7 +1,6 @@
 import React from 'react';
 import Image from 'next/image';
 import cakedivider from '../assets/images/cakedivider.png';
-import { useState, useEffect } from 'react';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { FaStar } from 'react-icons/fa';
 
@@ -23,7 +22,7 @@ const BestSellers = ({ bestSellers }) => {
 };
 
 const SellerItems = ({ src }) => {
-    const { name, image_url, price_per_half_kg, rating, num_orders, type } = src;
+    const { name, image_url, price_per_half_kg, rating } = src;
     let ratingNumber = [];
     for (let i = 0; i < rating; i++) {
         ratingNumber.push(i);

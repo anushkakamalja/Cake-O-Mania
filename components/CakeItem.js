@@ -2,11 +2,11 @@ import React from 'react';
 import { FaStar } from 'react-icons/fa';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 
-const CakeItem = ({ src, isCartCakes, setIsCartCakes, setCartCakes, cartCakes }) => {
+const CakeItem = ({ src, setIsCartCakes, setCartCakes }) => {
     const cake = src;
-    const { name, image_url, price_per_half_kg, rating, num_orders, type } = src;
+    const { name, image_url, price_per_half_kg, rating } = src;
 
-    const addtoCart = (price) => {
+    const addtoCart = () => {
         setIsCartCakes((isCartCakes) => isCartCakes + 1);
         setCartCakes((cakes) => [...cakes, cake]);
     };

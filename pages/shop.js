@@ -16,7 +16,6 @@ const Shop = () => {
     const [isFiltered, setIsFiltered] = useState('rating');
     const [cartCakes, setCartCakes] = useState([]);
     const [isCartCakes, setIsCartCakes] = useState(0);
-    const [searchedCakes, setSearchedCakes] = useState([]);
     const [filterState, setFilterState] = useState('');
 
     const handleSearch = async (e) => {
@@ -123,30 +122,34 @@ const Shop = () => {
                     </div>
                     <div>
                         <div className=" group relative dropdown py-4 px-2 cursor-pointer font-header flex flex-row r">
-                            <a className="hover:text-rose-300 border-solid border-4 border-rose-100 pl-3 ml-2 pr-20 py-1 w-48 rounded-2xl">
+                            <button className="hover:text-rose-300 border-solid border-4 border-rose-100 pl-3 ml-2 pr-20 py-1 w-48 rounded-2xl">
                                 {' '}
                                 Sort by
-                            </a>
+                            </button>
 
                             <div className=" border-rose-200 w-42 p-4 text-lg mt-4 bg-white content-right text-center font-body  border-4 rounded-lg group-hover:block dropdown-menu absolute hidden h-auto">
                                 <div className="p-1.5 hover:text-rose-300 cursor-pointer">
-                                    <a onClick={() => setIsFiltered('popularity')}>Popularity</a>
+                                    <button onClick={() => setIsFiltered('popularity')}>
+                                        Popularity
+                                    </button>
                                 </div>
                                 <hr className="bg-blue-300 h-0.5 p-px w-1/3 m-auto" />
                                 <div className="p-1.5 hover:text-rose-300 cursor-pointer">
-                                    <a onClick={() => setIsFiltered('ratings')}>Ratings</a>
+                                    <button onClick={() => setIsFiltered('ratings')}>
+                                        Ratings
+                                    </button>
                                 </div>
                                 <hr className="bg-blue-300 h-0.5 p-px w-1/3 m-auto" />
                                 <div className="p-1.5 hover:text-rose-300 cursor-pointer">
-                                    <a onClick={() => setIsFiltered('low_to_high')}>
+                                    <button onClick={() => setIsFiltered('low_to_high')}>
                                         Price:low to high
-                                    </a>
+                                    </button>
                                 </div>
                                 <hr className="bg-blue-300 h-0.5 p-px w-1/3 m-auto" />
                                 <div className="p-1.5 hover:text-rose-300 cursor-pointer">
-                                    <a onClick={() => setIsFiltered('high_to_low')}>
+                                    <button onClick={() => setIsFiltered('high_to_low')}>
                                         Price:high to low
-                                    </a>
+                                    </button>
                                 </div>
                             </div>
                             <div className="absolute top-7 right-5 text-rose-400">
@@ -175,9 +178,6 @@ const Shop = () => {
                     </div>
                 </div>
             </div>
-            <div className="mx-16 font-header mb-4 underline text-5xl">
-                <a href="#">Cakes</a>
-            </div>
             <div className="flex md:flex-row flex-col justify-center ">
                 <CakeItemList
                     allCakes={filteredCakes}
@@ -186,7 +186,6 @@ const Shop = () => {
                     setCartCakes={setCartCakes}
                     cartCakes={cartCakes}
                 />
-                ;
                 <div className="pl-20 flex justify-center">
                     <div className="flex flex-col">
                         <Cart cartCake={cartCakes} setCartCakes={setCartCakes} />

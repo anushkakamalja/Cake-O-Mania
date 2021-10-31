@@ -31,13 +31,13 @@ export default function Home() {
             <Specialities />
             <HappyHours />
             <BestSellers bestSellers={bestSellers} />
-            <a id="reviews">
+            <div id="reviews">
                 <Reviews />
-            </a>
+            </div>
             <Video />
-            <a id="contacts">
+            <div id="contacts">
                 <Footer />
-            </a>
+            </div>
             <Top />
         </div>
     );

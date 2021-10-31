@@ -1,9 +1,6 @@
-import react from 'react';
 import { useState, useEffect } from 'react';
 import cakeImage from '../assets/images/Happy hour.png';
-import cakeDivider from '../assets/images/cakedivider.png';
 import Image from 'next/image';
-import { data } from 'autoprefixer';
 
 const Clock = () => {
     const date = new Date();
@@ -18,7 +15,7 @@ const Clock = () => {
     if (currentMinutes < 0) {
         setHour(19 - date.getHours());
     }
-    if (currentHours < -0) {
+    if (currentHours < 0) {
         setHour(19 - (date.getHours() % 12));
     }
     useEffect(() => {
