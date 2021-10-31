@@ -181,7 +181,9 @@ const Checkout = () => {
                                     <p className="pt-5">
                                         <p>Address*</p>
                                         <div className="py-2">
-                                            <input
+                                            <textarea
+                                                rows="3"
+                                                cols="50"
                                                 type="text"
                                                 name="addr"
                                                 id="addr"
