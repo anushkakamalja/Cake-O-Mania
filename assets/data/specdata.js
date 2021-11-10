@@ -34,23 +34,23 @@ const specialities = [
         {
             src: macaron,
             type: 'Macarons',
-            text: 'Lorem Ipsum is simply dummy text of the printing '
+            text: 'Sugar filled sandwiches '
         },
 
         {
             src: chocolate,
             type: 'Chocolates',
-            text: 'Lorem Ipsum is simply dummy text of the printing '
+            text: 'Taste of heaven in each bite'
         },
         {
             src: small_cake,
             type: 'Small Cakes',
-            text: 'Lorem Ipsum is simply dummy text of the printing'
+            text: 'For personal devours'
         },
         {
             src: muffin,
             type: 'Muffins',
-            text: 'Lorem Ipsum is simply dummy text of the printing'
+            text: 'Well it\'s not about the cream always.'
         }
     ]
 ];
