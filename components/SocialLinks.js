@@ -8,7 +8,7 @@ const Icons = () => {
             <a
                 href="https://www.instagram.com/cakeomania_by_anushka/"
                 target="_blank"
-                rel="noreferrer">
+                rel="noopener noreferrer">
                 <AiOutlineInstagram
                     className="ml-4 mr-4 transform transition duration-500 hover:scale-150"
                     size={60}
@@ -17,19 +17,19 @@ const Icons = () => {
             <a
                 href="https://www.facebook.com/cakeomania.by.anushka/"
                 target="_blank"
-                rel="noreferrer">
+                rel="noopener noreferrer">
                 <AiOutlineFacebook
                     className="ml-4 mr-4 transform transition duration-500 hover:scale-150 "
                     size={60}
                 />
             </a>
-            <a href="https://wa.me/9619238916" target="_blank" rel="noreferrer">
+            <a href="https://wa.me/9619238916" target="_blank" rel="noopener noreferrer">
                 <AiOutlineWhatsApp
                     className="ml-4 mr-4 transform transition duration-500 hover:scale-150 "
                     size={60}
                 />
             </a>
-            <a href="tel:919619238916" target="_blank" rel="noreferrer">
+            <a href="tel:919619238916" target="_blank" rel="noopener noreferrer">
                 <FiPhone
                     className=" ml-4 mr-4 transform transition duration-500 hover:scale-150"
                     size={55}
